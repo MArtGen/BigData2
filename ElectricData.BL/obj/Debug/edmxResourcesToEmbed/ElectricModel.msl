@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MainDBModelContainer" CdmEntityContainer="MainDBContext">
+    <EntitySetMapping Name="ammeters">
+      <EntityTypeMapping TypeName="MainDBModel.ammeter">
+        <MappingFragment StoreEntitySet="ammeters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ammeters_count" ColumnName="ammeters_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bloks">
+      <EntityTypeMapping TypeName="MainDBModel.blok">
+        <MappingFragment StoreEntitySet="bloks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bloks_name" ColumnName="bloks_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="circuits">
+      <EntityTypeMapping TypeName="MainDBModel.circuit">
+        <MappingFragment StoreEntitySet="circuits">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="converters_i">
+      <EntityTypeMapping TypeName="MainDBModel.converters_i">
+        <MappingFragment StoreEntitySet="converters_i">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="conv_i" ColumnName="conv_i" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="converters_u">
+      <EntityTypeMapping TypeName="MainDBModel.converters_u">
+        <MappingFragment StoreEntitySet="converters_u">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="conv_u" ColumnName="conv_u" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="counters">
+      <EntityTypeMapping TypeName="MainDBModel.counter">
+        <MappingFragment StoreEntitySet="counters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="counter_name" ColumnName="counter_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="MainDBModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inputs">
+      <EntityTypeMapping TypeName="MainDBModel.input">
+        <MappingFragment StoreEntitySet="inputs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="inputs_count" ColumnName="inputs_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="krms">
+      <EntityTypeMapping TypeName="MainDBModel.krm">
+        <MappingFragment StoreEntitySet="krm">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="krm_ind" ColumnName="krm_ind" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="MainDBModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_PCAM" ColumnName="id_PCAM" />
+          <ScalarProperty Name="orders_name" ColumnName="orders_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regists">
+      <EntityTypeMapping TypeName="MainDBModel.regist">
+        <MappingFragment StoreEntitySet="regist">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="PCAM" ColumnName="PCAM" />
+          <ScalarProperty Name="id_circuits" ColumnName="id_circuits" />
+          <ScalarProperty Name="id_counters" ColumnName="id_counters" />
+          <ScalarProperty Name="id_inputs" ColumnName="id_inputs" />
+          <ScalarProperty Name="id_ammeters" ColumnName="id_ammeters" />
+          <ScalarProperty Name="id_bloks" ColumnName="id_bloks" />
+          <ScalarProperty Name="id_converters_i" ColumnName="id_converters_i" />
+          <ScalarProperty Name="id_converters_u" ColumnName="id_converters_u" />
+          <ScalarProperty Name="id_krm" ColumnName="id_krm" />
+          <ScalarProperty Name="id_voltmeters" ColumnName="id_voltmeters" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MainDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="voltmeters">
+      <EntityTypeMapping TypeName="MainDBModel.voltmeter">
+        <MappingFragment StoreEntitySet="voltmeters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="volt_ind" ColumnName="volt_ind" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SelectAll" FunctionName="Хранилище MainDBModel.SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDBModel.SelectAll_Result">
+          <ScalarProperty Name="PCAM" ColumnName="PCAM" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+          <ScalarProperty Name="counter_name" ColumnName="counter_name" />
+          <ScalarProperty Name="inputs_count" ColumnName="inputs_count" />
+          <ScalarProperty Name="bloks_name" ColumnName="bloks_name" />
+          <ScalarProperty Name="ammeters_count" ColumnName="ammeters_count" />
+          <ScalarProperty Name="conv_i" ColumnName="conv_i" />
+          <ScalarProperty Name="conv_u" ColumnName="conv_u" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="krm_ind" ColumnName="krm_ind" />
+          <ScalarProperty Name="volt_ind" ColumnName="volt_ind" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectPCAM" FunctionName="Хранилище MainDBModel.SelectPCAM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDBModel.SelectPCAM_Result">
+          <ScalarProperty Name="PCAM" ColumnName="PCAM" />
+          <ScalarProperty Name="orders_name" ColumnName="orders_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MainDBModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MainDBModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MainDBModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MainDBModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MainDBModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MainDBModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MainDBModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

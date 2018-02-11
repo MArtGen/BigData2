@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MainDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ammeter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ammeters_count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_ammeters" FromRole="ammeters" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="blok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bloks_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_bloks" FromRole="bloks" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="circuit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_circuits" FromRole="circuits" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="converters_i">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="conv_i" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_converters_i" FromRole="converters_i" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="converters_u">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="conv_u" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_converters_u" FromRole="converters_u" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="counter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="counter_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_counters" FromRole="counters" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="country_name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_country" FromRole="country" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="input">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="inputs_count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_inputs" FromRole="inputs" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="krm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="krm_ind" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_krm" FromRole="krm" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_PCAM" Type="Int32" Nullable="false" />
+    <Property Name="orders_name" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="regist" Relationship="Self.FK_to_regist" FromRole="orders" ToRole="regist" />
+  </EntityType>
+  <EntityType Name="regist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PCAM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_circuits" Type="Int32" Nullable="false" />
+    <Property Name="id_counters" Type="Int32" Nullable="false" />
+    <Property Name="id_inputs" Type="Int32" Nullable="false" />
+    <Property Name="id_ammeters" Type="Int32" Nullable="false" />
+    <Property Name="id_bloks" Type="Int32" Nullable="false" />
+    <Property Name="id_converters_i" Type="Int32" Nullable="false" />
+    <Property Name="id_converters_u" Type="Int32" Nullable="false" />
+    <Property Name="id_krm" Type="Int32" Nullable="false" />
+    <Property Name="id_voltmeters" Type="Int32" Nullable="false" />
+    <Property Name="id_country" Type="Int32" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ammeter" Relationship="Self.FK_to_ammeters" FromRole="regist" ToRole="ammeters" />
+    <NavigationProperty Name="blok" Relationship="Self.FK_to_bloks" FromRole="regist" ToRole="bloks" />
+    <NavigationProperty Name="circuit" Relationship="Self.FK_to_circuits" FromRole="regist" ToRole="circuits" />
+    <NavigationProperty Name="converters_i" Relationship="Self.FK_to_converters_i" FromRole="regist" ToRole="converters_i" />
+    <NavigationProperty Name="converters_u" Relationship="Self.FK_to_converters_u" FromRole="regist" ToRole="converters_u" />
+    <NavigationProperty Name="counter" Relationship="Self.FK_to_counters" FromRole="regist" ToRole="counters" />
+    <NavigationProperty Name="country" Relationship="Self.FK_to_country" FromRole="regist" ToRole="country" />
+    <NavigationProperty Name="input" Relationship="Self.FK_to_inputs" FromRole="regist" ToRole="inputs" />
+    <NavigationProperty Name="krm" Relationship="Self.FK_to_krm" FromRole="regist" ToRole="krm" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_to_regist" FromRole="regist" ToRole="orders" />
+    <NavigationProperty Name="voltmeter" Relationship="Self.FK_to_voltmeters" FromRole="regist" ToRole="voltmeters" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="voltmeter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="volt_ind" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="regists" Relationship="Self.FK_to_voltmeters" FromRole="voltmeters" ToRole="regist" />
+  </EntityType>
+  <Association Name="FK_to_ammeters">
+    <End Role="ammeters" Type="Self.ammeter" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ammeters">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_ammeters" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_bloks">
+    <End Role="bloks" Type="Self.blok" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bloks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_bloks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_circuits">
+    <End Role="circuits" Type="Self.circuit" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="circuits">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_circuits" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_converters_i">
+    <End Role="converters_i" Type="Self.converters_i" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="converters_i">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_converters_i" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_converters_u">
+    <End Role="converters_u" Type="Self.converters_u" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="converters_u">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_converters_u" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_counters">
+    <End Role="counters" Type="Self.counter" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="counters">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_counters" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_country">
+    <End Role="country" Type="Self.country" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_inputs">
+    <End Role="inputs" Type="Self.input" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inputs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_inputs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_krm">
+    <End Role="krm" Type="Self.krm" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="krm">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_krm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_regist">
+    <End Role="regist" Type="Self.regist" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="id_PCAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_to_voltmeters">
+    <End Role="voltmeters" Type="Self.voltmeter" Multiplicity="1" />
+    <End Role="regist" Type="Self.regist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="voltmeters">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="regist">
+        <PropertyRef Name="id_voltmeters" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MainDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ammeters" EntityType="Self.ammeter" />
+    <EntitySet Name="bloks" EntityType="Self.blok" />
+    <EntitySet Name="circuits" EntityType="Self.circuit" />
+    <EntitySet Name="converters_i" EntityType="Self.converters_i" />
+    <EntitySet Name="converters_u" EntityType="Self.converters_u" />
+    <EntitySet Name="counters" EntityType="Self.counter" />
+    <EntitySet Name="countries" EntityType="Self.country" />
+    <EntitySet Name="inputs" EntityType="Self.input" />
+    <EntitySet Name="krms" EntityType="Self.krm" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="regists" EntityType="Self.regist" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="voltmeters" EntityType="Self.voltmeter" />
+    <AssociationSet Name="FK_to_ammeters" Association="Self.FK_to_ammeters">
+      <End Role="ammeters" EntitySet="ammeters" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_bloks" Association="Self.FK_to_bloks">
+      <End Role="bloks" EntitySet="bloks" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_circuits" Association="Self.FK_to_circuits">
+      <End Role="circuits" EntitySet="circuits" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_converters_i" Association="Self.FK_to_converters_i">
+      <End Role="converters_i" EntitySet="converters_i" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_converters_u" Association="Self.FK_to_converters_u">
+      <End Role="converters_u" EntitySet="converters_u" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_counters" Association="Self.FK_to_counters">
+      <End Role="counters" EntitySet="counters" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_country" Association="Self.FK_to_country">
+      <End Role="country" EntitySet="countries" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_inputs" Association="Self.FK_to_inputs">
+      <End Role="inputs" EntitySet="inputs" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_krm" Association="Self.FK_to_krm">
+      <End Role="krm" EntitySet="krms" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_regist" Association="Self.FK_to_regist">
+      <End Role="regist" EntitySet="regists" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_to_voltmeters" Association="Self.FK_to_voltmeters">
+      <End Role="voltmeters" EntitySet="voltmeters" />
+      <End Role="regist" EntitySet="regists" />
+    </AssociationSet>
+    <FunctionImport Name="SelectAll" ReturnType="Collection(MainDBModel.SelectAll_Result)" />
+    <FunctionImport Name="SelectPCAM" ReturnType="Collection(MainDBModel.SelectPCAM_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MainDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MainDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="SelectAll_Result">
+    <Property Type="String" Name="PCAM" Nullable="false" />
+    <Property Type="String" Name="c_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="counter_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="inputs_count" Nullable="false" />
+    <Property Type="String" Name="bloks_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ammeters_count" Nullable="false" />
+    <Property Type="String" Name="conv_i" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="conv_u" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="country_name" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="krm_ind" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="volt_ind" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="link" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectPCAM_Result">
+    <Property Type="String" Name="PCAM" Nullable="false" />
+    <Property Type="Int32" Name="orders_name" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
