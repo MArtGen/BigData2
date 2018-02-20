@@ -13,8 +13,11 @@ namespace ElectricData
 
     public partial class FormOfConnectionDB : MetroForm, IFormOfConnection
     {
+        Settings _settings = null;
+
         public FormOfConnectionDB()
         {
+            _settings = Settings.GetSettings();
             InitializeComponent();
             Connection_button.Click += Connection_button_Click;
             ExitOfConnection_button.Click += ExitOfConnection_button_Click;
@@ -29,7 +32,6 @@ namespace ElectricData
         private void Connection_button_Click(object sender, EventArgs e)
         {
             DBconnect?.Invoke(this, EventArgs.Empty);
-
             Hide();
 
             FormOfSelect SelectForm = new FormOfSelect();

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using ElectricData.BL;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ElectricData
 {
@@ -41,9 +43,13 @@ namespace ElectricData
             _select.ExitApp += _select_ExitApp;
         }
 
+        public MainPresenter()
+        {
+        }
+
         private void _select_ExitApp(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Exit();
         }
 
         private void _select_SelectSort(object sender, EventArgs e)
@@ -58,7 +64,7 @@ namespace ElectricData
 
         private void _search_ExitApp(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Exit();
         }
 
         private void _search_OpenFolder(object sender, EventArgs e)
@@ -78,7 +84,7 @@ namespace ElectricData
 
         private void _editor_ExitApp(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Exit();
         }
 
         private void _editor_TableChange(object sender, EventArgs e)
@@ -98,12 +104,16 @@ namespace ElectricData
 
         private void _connection_DBconnect(object sender, EventArgs e)
         {
+            Settings settings = null;
             try
             {
                 string connectionString = _manager.ConnectionDB(_connection.Servername, _connection.DBname);
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+                    settings.Server_name = _connection.Servername;
+                    settings.Db_name = _connection.DBname;
+                    settings.Save();
                 }
             }
             catch (Exception ex)

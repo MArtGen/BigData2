@@ -88,10 +88,12 @@
     <Compile Include="FormOfSelect.Designer.cs">
       <DependentUpon>FormOfSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="MainPresenter.cs" />
     <Compile Include="MessageService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="FormOfConnectionDB.resx">
       <DependentUpon>FormOfConnectionDB.cs</DependentUpon>
     </EmbeddedResource>
