@@ -104,16 +104,12 @@ namespace ElectricData
 
         private void _connection_DBconnect(object sender, EventArgs e)
         {
-            Settings settings = null;
             try
             {
                 string connectionString = _manager.ConnectionDB(_connection.Servername, _connection.DBname);
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    settings.Server_name = _connection.Servername;
-                    settings.Db_name = _connection.DBname;
-                    settings.Save();
                 }
             }
             catch (Exception ex)

@@ -30,3 +30,16 @@ I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.csprojReso
 I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.csproj.CoreCompileInputs.cache
 I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.dll
 I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.pdb
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\ElectricData.BL.dll.config
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\ElectricData.BL.dll
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\ElectricData.BL.pdb
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\EntityFramework.dll
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\EntityFramework.SqlServer.dll
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\EntityFramework.xml
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\EntityFramework.SqlServer.xml
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\ru\EntityFramework.resources.dll
+d:\Artem\Git\BigData2\ElectricData.BL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+d:\Artem\Git\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.csprojResolveAssemblyReference.cache
+d:\Artem\Git\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.csproj.CoreCompileInputs.cache
+d:\Artem\Git\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.dll
+d:\Artem\Git\BigData2\ElectricData.BL\obj\Debug\ElectricData.BL.pdb

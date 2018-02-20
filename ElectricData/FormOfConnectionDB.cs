@@ -13,14 +13,22 @@ namespace ElectricData
 
     public partial class FormOfConnectionDB : MetroForm, IFormOfConnection
     {
-        Settings _settings = null;
+
+        Settings _settings = null; 
 
         public FormOfConnectionDB()
         {
-            _settings = Settings.GetSettings();
             InitializeComponent();
+            _settings = Settings.GetSettings();
+            _initControlls();
             Connection_button.Click += Connection_button_Click;
             ExitOfConnection_button.Click += ExitOfConnection_button_Click;
+        }
+
+        private void _initControlls()
+        {
+            serverName_text.Text = _settings.Server_name;
+            nameDB_text.Text = _settings.Db_name;
         }
 
         #region События формы ConnectionDB
@@ -31,6 +39,10 @@ namespace ElectricData
 
         private void Connection_button_Click(object sender, EventArgs e)
         {
+            _settings.Server_name = serverName_text.Text;
+            _settings.Db_name = nameDB_text.Text;
+            _settings.Save();
+
             DBconnect?.Invoke(this, EventArgs.Empty);
             Hide();
 
