@@ -24,7 +24,7 @@ namespace ElectricData
             Connection_button.Click += Connection_button_Click;
             ExitOfConnection_button.Click += ExitOfConnection_button_Click;
         }
-
+        // Инициализация поле имени сервера и базы данных
         private void _initControlls()
         {
             serverName_text.Text = _settings.Server_name;
