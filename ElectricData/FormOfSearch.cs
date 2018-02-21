@@ -9,7 +9,6 @@ namespace ElectricData
         string Extra { get;}
         DataGridView SearchView { get;}
         event EventHandler OpenEditor;
-        event EventHandler ExitApp;
         event EventHandler OpenFolder;
         event EventHandler ItemSelect;
     }
@@ -36,7 +35,7 @@ namespace ElectricData
         #region События формы Search
         private void ExitOfSearch_button_Click(object sender, EventArgs e)
         {
-            ExitApp?.Invoke(this, EventArgs.Empty);
+            Application.Exit();
         }
 
         private void OpenFolder_button_Click(object sender, EventArgs e)
@@ -111,7 +110,6 @@ namespace ElectricData
         }
 
         public event EventHandler OpenEditor;
-        public event EventHandler ExitApp;
         public event EventHandler OpenFolder;
         public event EventHandler ItemSelect;
         #endregion

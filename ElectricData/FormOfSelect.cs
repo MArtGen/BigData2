@@ -1,12 +1,12 @@
 ﻿using System;
 using MetroFramework.Forms;
+using System.Windows.Forms;
 
 namespace ElectricData
 {
     public interface IFormOfSelect
     {
         event EventHandler OkClick;
-        event EventHandler ExitApp;
         event EventHandler SelectSort;
     }
     public partial class FormOfSelect : MetroForm, IFormOfSelect
@@ -22,7 +22,7 @@ namespace ElectricData
         #region События формы Select
         private void ExitSelect_button_Click(object sender, EventArgs e)
         {
-            ExitApp?.Invoke(this, EventArgs.Empty);
+            Application.Exit();
         }
 
         private void SelectSort_button_Click(object sender, EventArgs e)
@@ -38,7 +38,6 @@ namespace ElectricData
 
         #region IFormOfSelect
         public event EventHandler OkClick;
-        public event EventHandler ExitApp;
         public event EventHandler SelectSort;
         #endregion
     }

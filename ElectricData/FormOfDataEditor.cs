@@ -8,7 +8,6 @@ namespace ElectricData
     {
         DataGridView TableView { get; }
         event EventHandler TableChange;
-        event EventHandler ExitApp;
         event EventHandler SaveChanges;
     }
     public partial class FormOfDataEditor : MetroForm, IFormOfDataEditor
@@ -24,7 +23,7 @@ namespace ElectricData
         #region События формы DataEditor
         private void ExitOfDataEditor_button_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Exit();
         }
 
         private void SaveData_button_Click(object sender, EventArgs e)
@@ -45,7 +44,6 @@ namespace ElectricData
         }
 
         public event EventHandler TableChange;
-        public event EventHandler ExitApp;
         public event EventHandler SaveChanges;
         #endregion
     }

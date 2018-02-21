@@ -1,5 +1,6 @@
 ﻿using System;
 using MetroFramework.Forms;
+using System.Windows.Forms;
 
 namespace ElectricData
 {
@@ -34,7 +35,10 @@ namespace ElectricData
         #region События формы ConnectionDB
         private void ExitOfConnection_button_Click(object sender, EventArgs e)
         {
-            ExitApp?.Invoke(this, EventArgs.Empty);
+            if (ExitApp != null)
+            {
+                Application.Exit();
+            }
         }
 
         private void Connection_button_Click(object sender, EventArgs e)

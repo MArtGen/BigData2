@@ -2,7 +2,6 @@
 using System.IO;
 using ElectricData.BL;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace ElectricData
@@ -31,25 +30,24 @@ namespace ElectricData
 
             _editor.SaveChanges += _editor_SaveChanges;
             _editor.TableChange += _editor_TableChange;
-            _editor.ExitApp += _editor_ExitApp;
 
             _search.ItemSelect += _search_ItemSelect;
             _search.OpenEditor += _search_OpenEditor;
             _search.OpenFolder += _search_OpenFolder;
-            _search.ExitApp += _search_ExitApp;
 
             _select.OkClick += _select_OkClick;
             _select.SelectSort += _select_SelectSort;
-            _select.ExitApp += _select_ExitApp;
         }
+
 
         public MainPresenter()
         {
+
         }
 
-        private void _select_ExitApp(object sender, EventArgs e)
+        private void _connection_ExitApp(object sender, EventArgs e)
         {
-            Application.Exit();
+            
         }
 
         private void _select_SelectSort(object sender, EventArgs e)
@@ -60,11 +58,6 @@ namespace ElectricData
         private void _select_OkClick(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private void _search_ExitApp(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void _search_OpenFolder(object sender, EventArgs e)
@@ -82,11 +75,6 @@ namespace ElectricData
             throw new NotImplementedException();
         }
 
-        private void _editor_ExitApp(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void _editor_TableChange(object sender, EventArgs e)
         {
             throw new NotImplementedException();
@@ -95,11 +83,6 @@ namespace ElectricData
         private void _editor_SaveChanges(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private void _connection_ExitApp(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void _connection_DBconnect(object sender, EventArgs e)
@@ -115,6 +98,7 @@ namespace ElectricData
             catch (Exception ex)
             {
                 _messageService.ShowError(ex.Message);
+                _connection_ExitApp(this, e);
             }
         }
     }
