@@ -1,16 +1,20 @@
 ﻿using System;
 using MetroFramework.Forms;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace ElectricData
 {
     public interface IFormOfSelect
     {
+        List<string> ItemsBox { get; set; }
         event EventHandler OkClick;
         event EventHandler SelectSort;
     }
     public partial class FormOfSelect : MetroForm, IFormOfSelect
     {
+        List<string> items_select_box;
+
         public FormOfSelect()
         {
             InitializeComponent();
@@ -32,13 +36,20 @@ namespace ElectricData
 
         private void SelectOfSort_box_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SelectOfSort_box.DataSource = items_select_box;
         }
         #endregion
 
         #region IFormOfSelect
         public event EventHandler OkClick;
         public event EventHandler SelectSort;
+
+
+        public List<string> ItemsBox
+        {
+            get { return items_select_box; }
+            set { items_select_box = value; }
+        }
         #endregion
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Server_name>SQLEXPRESS</Server_name>
-  <Db_name>maindb</Db_name>
+  <Server_name />
+  <Db_name />
 </Settings>

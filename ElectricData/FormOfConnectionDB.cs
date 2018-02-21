@@ -9,13 +9,12 @@ namespace ElectricData
         string Servername { get; set; }
         string DBname { get; set; }
         event EventHandler DBconnect;
-        event EventHandler ExitApp;
     }
 
     public partial class FormOfConnectionDB : MetroForm, IFormOfConnection
     {
 
-        Settings _settings = null; 
+        Settings _settings = null;
 
         public FormOfConnectionDB()
         {
@@ -35,10 +34,7 @@ namespace ElectricData
         #region События формы ConnectionDB
         private void ExitOfConnection_button_Click(object sender, EventArgs e)
         {
-            if (ExitApp != null)
-            {
-                Application.Exit();
-            }
+            Application.Exit();
         }
 
         private void Connection_button_Click(object sender, EventArgs e)
@@ -49,6 +45,8 @@ namespace ElectricData
 
             DBconnect?.Invoke(this, EventArgs.Empty);
             Hide();
+
+            if (Globals.exit_app == true) Application.Exit();
 
             FormOfSelect SelectForm = new FormOfSelect();
             SelectForm.Show();
@@ -68,7 +66,6 @@ namespace ElectricData
         }
 
         public event EventHandler DBconnect;
-        public event EventHandler ExitApp;
         #endregion
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using ElectricData.BL;
 using System.Data.SqlClient;
-using System.Xml.Serialization;
 
 namespace ElectricData
 {
@@ -26,7 +24,6 @@ namespace ElectricData
             _manager = manager;
 
             _connection.DBconnect += _connection_DBconnect;
-            _connection.ExitApp += _connection_ExitApp;
 
             _editor.SaveChanges += _editor_SaveChanges;
             _editor.TableChange += _editor_TableChange;
@@ -37,17 +34,6 @@ namespace ElectricData
 
             _select.OkClick += _select_OkClick;
             _select.SelectSort += _select_SelectSort;
-        }
-
-
-        public MainPresenter()
-        {
-
-        }
-
-        private void _connection_ExitApp(object sender, EventArgs e)
-        {
-            
         }
 
         private void _select_SelectSort(object sender, EventArgs e)
@@ -98,7 +84,7 @@ namespace ElectricData
             catch (Exception ex)
             {
                 _messageService.ShowError(ex.Message);
-                _connection_ExitApp(this, e);
+                Globals.exit_app = true;
             }
         }
     }
