@@ -39,14 +39,16 @@ namespace ElectricData
 
         private void Connection_button_Click(object sender, EventArgs e)
         {
-            _settings.Server_name = serverName_text.Text;
-            _settings.Db_name = nameDB_text.Text;
-            _settings.Save();
-
             DBconnect?.Invoke(this, EventArgs.Empty);
             Hide();
 
             if (Globals.exit_app == true) Application.Exit();
+            else
+            {
+                _settings.Server_name = serverName_text.Text;
+                _settings.Db_name = nameDB_text.Text;
+                _settings.Save();
+            }
 
             FormOfSelect SelectForm = new FormOfSelect();
             SelectForm.Show();
