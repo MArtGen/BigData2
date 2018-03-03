@@ -75,11 +75,7 @@ namespace ElectricData
         {
             try
             {
-                string connectionString = _manager.ConnectionDB(_connection.Servername, _connection.DBname);
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                }
+                _manager.ConnectionDB(_connection.Servername, _connection.DBname);
             }
             catch (Exception ex)
             {

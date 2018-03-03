@@ -14,16 +14,20 @@ namespace ElectricData.BL
         string GetLink(int id);
         void SaveContent(string content, int id);
         void DeleteContent(int id);
-        string ConnectionDB(string servername, string dbname);
+        void ConnectionDB(string servername, string dbname);
     }
 
     public class DataBaseManager : IDataBaseManager
     {
-        public string ConnectionDB(string servername, string dbname)
+        public void ConnectionDB(string servername, string dbname)
         {
             string connectionString = @"Data Source=.\" + servername + ";Initial Catalog=" + 
                                       dbname + ";Integrated Security=True";
-            return connectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                }
         }
 
         public void DeleteContent(int id)
