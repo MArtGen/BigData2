@@ -1,4 +1,6 @@
-﻿namespace ElectricData
+﻿using ElectricData.BL;
+
+namespace ElectricData
 {
     public class Globals
     {

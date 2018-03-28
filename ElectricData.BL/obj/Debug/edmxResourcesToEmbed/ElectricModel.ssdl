@@ -107,8 +107,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="volt_ind" Type="nvarchar" MaxLength="25" Nullable="false" />
   </EntityType>
-  <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "MainDB.dbo.MainTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <Association Name="FK_to_ammeters">
     <End Role="ammeters" Type="Self.ammeters" Multiplicity="1" />
     <End Role="regist" Type="Self.regist" Multiplicity="*" />

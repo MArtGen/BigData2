@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Data.SqlClient;
+
 
 namespace ElectricData.BL
 {
     public interface IDataBaseManager
     {
-        string GetNameOfPosition(int id);
+        List<string> Selection();
         string GetLink(int id);
         void SaveContent(string content, int id);
         void DeleteContent(int id);
@@ -21,8 +19,8 @@ namespace ElectricData.BL
     {
         public void ConnectionDB(string servername, string dbname)
         {
-            string connectionString = @"Data Source=.\" + servername + ";Initial Catalog=" + 
-                                      dbname + ";Integrated Security=True";
+                string connectionString = @"Data Source=.\" + servername + ";Initial Catalog=" + 
+                                        dbname + ";Integrated Security=True";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -40,9 +38,16 @@ namespace ElectricData.BL
             throw new NotImplementedException();
         }
 
-        public string GetNameOfPosition(int id)
+        public List<string> Selection (string sel)
         {
-            throw new NotImplementedException();
+            using (MainDBContext dc = new MainDBContext())
+            {
+                IQueryable some_name = sel.AsQueryable();
+
+                var _select = from some_name in dc.circuits
+                              select circuit.c_name;
+                return _select.ToList();
+            }
         }
 
         public void SaveContent(string content, int id)

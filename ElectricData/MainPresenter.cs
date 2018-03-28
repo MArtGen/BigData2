@@ -1,6 +1,5 @@
 ﻿using System;
 using ElectricData.BL;
-using System.Data.SqlClient;
 
 namespace ElectricData
 {
@@ -25,25 +24,19 @@ namespace ElectricData
 
             _connection.DBconnect += _connection_DBconnect;
 
-            _editor.SaveChanges += _editor_SaveChanges;
-            _editor.TableChange += _editor_TableChange;
+            _select.SelectOfSort += _select_SelectOfSort;
 
             _search.ItemSelect += _search_ItemSelect;
             _search.OpenEditor += _search_OpenEditor;
             _search.OpenFolder += _search_OpenFolder;
 
-            _select.OkClick += _select_OkClick;
-            _select.SelectSort += _select_SelectSort;
+            _editor.SaveChanges += _editor_SaveChanges;
+            _editor.TableChange += _editor_TableChange;
         }
 
-        private void _select_SelectSort(object sender, EventArgs e)
+        private void _select_SelectOfSort(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void _select_OkClick(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            _select.SearchSelection = _manager.Selection();       
         }
 
         private void _search_OpenFolder(object sender, EventArgs e)

@@ -7,9 +7,8 @@ namespace ElectricData
 {
     public interface IFormOfSelect
     {
-        List<string> ItemsBox { get; set; }
-        event EventHandler OkClick;
-        event EventHandler SelectSort;
+        List<string> SearchSelection { get; set; }
+        event EventHandler SelectOfSort;
     }
     public partial class FormOfSelect : MetroForm, IFormOfSelect
     {
@@ -31,21 +30,29 @@ namespace ElectricData
 
         private void SelectSort_button_Click(object sender, EventArgs e)
         {
-            OkClick?.Invoke(this, EventArgs.Empty);
+            if (SelectOfSort_box.Text == "Учет электроэнергии")
+            {
+                FormOfSearch search = new FormOfSearch();
+                search.ShowDialog();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Интерфейс в разработке");
+            }
         }
 
         private void SelectOfSort_box_Click(object sender, EventArgs e)
         {
+            SelectOfSort?.Invoke(this, EventArgs.Empty);
             SelectOfSort_box.DataSource = items_select_box;
         }
         #endregion
 
         #region IFormOfSelect
-        public event EventHandler OkClick;
-        public event EventHandler SelectSort;
+        public event EventHandler SelectOfSort;
 
-
-        public List<string> ItemsBox
+        public List<string> SearchSelection
         {
             get { return items_select_box; }
             set { items_select_box = value; }
