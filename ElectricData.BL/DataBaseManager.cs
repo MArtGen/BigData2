@@ -8,8 +8,7 @@ namespace ElectricData.BL
 {
     public interface IDataBaseManager
     {
-        List<string> Selection();
-        string GetLink(int id);
+        List<string> Selection(string c);
         void SaveContent(string content, int id);
         void DeleteContent(int id);
         void ConnectionDB(string servername, string dbname);
@@ -33,20 +32,20 @@ namespace ElectricData.BL
             throw new NotImplementedException();
         }
 
-        public string GetLink(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> Selection (string sel)
+        public List<string> Selection (string select_items)
         {
             using (MainDBContext dc = new MainDBContext())
             {
-                IQueryable some_name = sel.AsQueryable();
-
-                var _select = from some_name in dc.circuits
-                              select circuit.c_name;
-                return _select.ToList();
+                List<string> nope = new List<string>();
+                nope.Add("Nope");
+                switch (select_items)
+                {
+                    case "circuits": var select_circuits = from circuit in dc.circuits select circuit.c_name;
+                        return select_circuits.ToList();
+                    case "ammeters": var select_ammeters = from ammeter in dc.ammeters select ammeter.ammeters_count;
+                        return select_ammeters.ToList().ConvertAll(s => Convert.ToString(s));
+                    default: return nope;
+                }
             }
         }
 

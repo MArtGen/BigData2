@@ -13,7 +13,7 @@ namespace ElectricData
 
     public partial class FormOfConnectionDB : MetroForm, IFormOfConnection
     {
-
+        FormOfSelect SelectForm = new FormOfSelect();
         Settings _settings = null;
 
         public FormOfConnectionDB()
@@ -41,13 +41,12 @@ namespace ElectricData
         {
             DBconnect?.Invoke(this, EventArgs.Empty);
 
-            if (Globals.exit_app == true) Application.Exit();
+            if (Globals.exit_app == false) //Application.Exit();
             {
                 Hide();
                 _settings.Server_name = serverName_text.Text;
                 _settings.Db_name = nameDB_text.Text;
                 _settings.Save();
-                FormOfSelect SelectForm = new FormOfSelect();
                 SelectForm.ShowDialog();
             }
         }

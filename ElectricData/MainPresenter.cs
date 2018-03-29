@@ -36,7 +36,7 @@ namespace ElectricData
 
         private void _select_SelectOfSort(object sender, EventArgs e)
         {
-            _select.SearchSelection = _manager.Selection();       
+            _select.SearchSelection = _manager.Selection("circuits");       
         }
 
         private void _search_OpenFolder(object sender, EventArgs e)

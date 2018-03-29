@@ -23,7 +23,7 @@ using System.Linq;
 
 public partial class MainDBContext : DbContext
 {
-    public MainDBContext()
+        public MainDBContext()
         : base("name=MainDBContext")
     {
 

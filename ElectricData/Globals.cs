@@ -1,6 +1,4 @@
-﻿using ElectricData.BL;
-
-namespace ElectricData
+﻿namespace ElectricData
 {
     public class Globals
     {

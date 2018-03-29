@@ -57,7 +57,6 @@ I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.csprojResolveAss
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.FormOfConnectionDB.resources
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.FormOfDataEditor.resources
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.FormOfSearch.resources
-I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.FormOfSelect.resources
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.Properties.Resources.resources
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.csproj.GenerateResource.Cache
 I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.csproj.CoreCompileInputs.cache
@@ -87,3 +86,4 @@ d:\Artem\Git\BigData2\ElectricData\obj\Debug\ElectricData.csproj.GenerateResourc
 d:\Artem\Git\BigData2\ElectricData\obj\Debug\ElectricData.csproj.CoreCompileInputs.cache
 d:\Artem\Git\BigData2\ElectricData\obj\Debug\ElectricData.exe
 d:\Artem\Git\BigData2\ElectricData\obj\Debug\ElectricData.pdb
+I:\Learning\GitHub\BigData2\ElectricData\obj\Debug\ElectricData.FormOfSelect.resources

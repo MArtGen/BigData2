@@ -35,7 +35,7 @@
             // 
             // SelectOfSort_box
             // 
-            this.SelectOfSort_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SelectOfSort_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectOfSort_box.FormattingEnabled = true;
             this.SelectOfSort_box.ItemHeight = 23;
