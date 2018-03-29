@@ -24,7 +24,7 @@ namespace ElectricData
 
             MainPresenter presenter = new MainPresenter(formConnection, formEditor, formSearch, formSelect, service, DBmanager);
 
-            Application.Run(formConnection);
+            Application.Run(formSearch);
         }
     }
 }

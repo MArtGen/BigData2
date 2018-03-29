@@ -44,6 +44,8 @@ namespace ElectricData.BL
                         return select_circuits.ToList();
                     case "ammeters": var select_ammeters = from ammeter in dc.ammeters select ammeter.ammeters_count;
                         return select_ammeters.ToList().ConvertAll(s => Convert.ToString(s));
+                    case "country": var select_country = from country in dc.countries select country.country_name;
+                        return select_country.ToList();
                     default: return nope;
                 }
             }

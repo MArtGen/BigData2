@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using System.Collections.Generic;
 
 namespace ElectricData
 {
     public interface IFormOfSearch
     {
+        List<string> Search_of_items { get; set; }
         string Extra { get;}
         DataGridView SearchView { get;}
         event EventHandler OpenEditor;
@@ -14,6 +16,8 @@ namespace ElectricData
     }
     public partial class FormOfSearch : MetroForm, IFormOfSearch
     {
+        List<string> item_search;
+
         public FormOfSearch()
         {
             InitializeComponent();
@@ -50,7 +54,8 @@ namespace ElectricData
 
         private void Country_box_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ItemSelect?.Invoke(this, EventArgs.Empty);
+            country_box.DataSource = item_search;
         }
 
         private void Krm_box_Click(object sender, EventArgs e)
@@ -107,6 +112,11 @@ namespace ElectricData
         public DataGridView SearchView
         {
             get => throw new NotImplementedException();
+        }
+        public List<string> Search_of_items
+        {
+            get { return item_search; }
+            set { item_search = value; }
         }
 
         public event EventHandler OpenEditor;

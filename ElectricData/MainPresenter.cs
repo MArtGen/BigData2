@@ -51,7 +51,7 @@ namespace ElectricData
 
         private void _search_ItemSelect(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _search.Search_of_items = _manager.Selection("country");
         }
 
         private void _editor_TableChange(object sender, EventArgs e)
