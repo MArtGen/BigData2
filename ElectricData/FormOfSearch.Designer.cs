@@ -303,6 +303,8 @@
             // 
             this.extra_text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.extra_text.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.extra_text.FontWeight = MetroFramework.MetroTextBoxWeight.Bold;
             this.extra_text.Location = new System.Drawing.Point(350, 384);
             this.extra_text.Name = "extra_text";
             this.extra_text.Size = new System.Drawing.Size(197, 30);

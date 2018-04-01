@@ -23,7 +23,7 @@ namespace ElectricData
         #region События формы DataEditor
         private void ExitOfDataEditor_button_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void SaveData_button_Click(object sender, EventArgs e)

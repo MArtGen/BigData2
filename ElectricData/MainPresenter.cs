@@ -27,8 +27,8 @@ namespace ElectricData
             _select.SelectOfSort += _select_SelectOfSort;
 
             _search.ItemSelect += _search_ItemSelect;
-            _search.OpenEditor += _search_OpenEditor;
             _search.OpenFolder += _search_OpenFolder;
+            _search.Select_Extra += _search_SelectOfExtra;
 
             _editor.SaveChanges += _editor_SaveChanges;
             _editor.TableChange += _editor_TableChange;
@@ -39,19 +39,19 @@ namespace ElectricData
             _select.SearchSelection = _manager.Selection("circuits");       
         }
 
-        private void _search_OpenFolder(object sender, EventArgs e)
+        private void _search_SelectOfExtra(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _search.Extra = _manager.Select_Note(_search.PCAM_link, "extra");
         }
 
-        private void _search_OpenEditor(object sender, EventArgs e)
+        private void _search_OpenFolder(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _search.Link = _manager.Select_Note(_search.PCAM_link, "link");
         }
 
         private void _search_ItemSelect(object sender, EventArgs e)
         {
-            _search.Search_of_items = _manager.Selection("country");
+            _search.Search_of_items = _manager.Selection(_search.Search_box);
         }
 
         private void _editor_TableChange(object sender, EventArgs e)
