@@ -23,7 +23,7 @@ using System.Linq;
 
 public partial class MainDBContext : DbContext
 {
-        public MainDBContext()
+    public MainDBContext()
         : base("name=MainDBContext")
     {
 
@@ -56,8 +56,6 @@ public partial class MainDBContext : DbContext
     public virtual DbSet<order> orders { get; set; }
 
     public virtual DbSet<regist> regists { get; set; }
-
-    public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
     public virtual DbSet<voltmeter> voltmeters { get; set; }
 

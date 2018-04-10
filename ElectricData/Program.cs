@@ -12,19 +12,17 @@ namespace ElectricData
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             FormOfConnectionDB formConnection = new FormOfConnectionDB();
+            FormOfSelect formSelect = new FormOfSelect();
             FormOfDataEditor formEditor = new FormOfDataEditor();
             FormOfSearch formSearch = new FormOfSearch();
-            FormOfSelect formSelect = new FormOfSelect();
             MessageService service = new MessageService();
             DataBaseManager DBmanager = new DataBaseManager();
+            Application.EnableVisualStyles();
 
-            MainPresenter presenter = new MainPresenter(formConnection, formEditor, formSearch, formSelect, service, DBmanager);
+            MainPresenter presenter = new MainPresenter(formConnection, formSelect, formEditor, formSearch, service, DBmanager);
 
-            Application.Run(formSearch);
+            Application.Run(formConnection);
         }
     }
 }

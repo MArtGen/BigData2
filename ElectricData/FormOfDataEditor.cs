@@ -9,13 +9,13 @@ namespace ElectricData
         DataGridView TableView { get; }
         event EventHandler TableChange;
         event EventHandler SaveChanges;
+        event EventHandler BackToSearch;
     }
     public partial class FormOfDataEditor : MetroForm, IFormOfDataEditor
     {
         public FormOfDataEditor()
         {
             InitializeComponent();
-            SelectOfTable_box.Click += SelectOfTable_box_Click;
             SaveData_button.Click += SaveData_button_Click;
             ExitOfDataEditor_button.Click += ExitOfDataEditor_button_Click;
         }
@@ -23,7 +23,8 @@ namespace ElectricData
         #region События формы DataEditor
         private void ExitOfDataEditor_button_Click(object sender, EventArgs e)
         {
-            Close();
+            BackToSearch?.Invoke(this, EventArgs.Empty);
+            Hide();
         }
 
         private void SaveData_button_Click(object sender, EventArgs e)
@@ -31,9 +32,12 @@ namespace ElectricData
             throw new NotImplementedException();
         }
 
-        private void SelectOfTable_box_Click(object sender, EventArgs e)
+        private void FormOfDataEditor_Load(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.SelectAll". При необходимости она может быть перемещена или удалена.
+            this.selectAllTableAdapter.Fill(this.mainDBDataSet.SelectAll);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.SelectAll". При необходимости она может быть перемещена или удалена.
+            this.selectAllTableAdapter.Fill(this.mainDBDataSet.SelectAll);
         }
         #endregion
 
@@ -43,6 +47,7 @@ namespace ElectricData
             get { throw new NotImplementedException(); }
         }
 
+        public event EventHandler BackToSearch;
         public event EventHandler TableChange;
         public event EventHandler SaveChanges;
         #endregion

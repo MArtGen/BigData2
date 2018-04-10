@@ -112,9 +112,6 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ElectricModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="voltmeter.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>

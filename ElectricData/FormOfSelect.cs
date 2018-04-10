@@ -8,7 +8,7 @@ namespace ElectricData
     public interface IFormOfSelect
     {
         List<string> SearchSelection { get; set; }
-        event EventHandler SelectOfSort;
+        event EventHandler OpenSearch;
     }
     public partial class FormOfSelect : MetroForm, IFormOfSelect
     {
@@ -17,7 +17,6 @@ namespace ElectricData
         public FormOfSelect()
         {
             InitializeComponent();
-            SelectOfSort_box.Click += SelectOfSort_box_Click;
             SelectSort_button.Click += SelectSort_button_Click;
             ExitSelect_button.Click += ExitSelect_button_Click;
         }
@@ -32,9 +31,8 @@ namespace ElectricData
         {
             if (SelectOfSort_box.Text == "Учет электроэнергии")
             {
-                FormOfSearch search = new FormOfSearch();
-                search.ShowDialog();
-                Close();
+                Hide();
+                OpenSearch?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -42,15 +40,15 @@ namespace ElectricData
             }
         }
 
-        private void SelectOfSort_box_Click(object sender, EventArgs e)
+        private void FormOfSelect_Load(object sender, EventArgs e)
         {
-            SelectOfSort?.Invoke(this, EventArgs.Empty);
-            SelectOfSort_box.DataSource = items_select_box;
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet_circuits.circuits". При необходимости она может быть перемещена или удалена.
+            this.circuitsTableAdapter.Fill(this.mainDBDataSet.circuits);
         }
         #endregion
 
         #region IFormOfSelect
-        public event EventHandler SelectOfSort;
+        public event EventHandler OpenSearch;
 
         public List<string> SearchSelection
         {
