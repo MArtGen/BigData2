@@ -22,7 +22,14 @@ namespace ElectricData
 
             MainPresenter presenter = new MainPresenter(formConnection, formSelect, formEditor, formSearch, service, DBmanager);
 
-            Application.Run(formConnection);
+            try
+            {
+                Application.Run(formConnection);
+            }
+            catch (Exception ex)
+            {
+                service.ShowError(ex.Message);
+            }
         }
     }
 }

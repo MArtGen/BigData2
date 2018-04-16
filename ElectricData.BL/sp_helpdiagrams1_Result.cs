@@ -13,20 +13,19 @@ namespace ElectricData.BL
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class order
+public partial class sp_helpdiagrams1_Result
 {
 
-    public int id { get; set; }
+    public string Database { get; set; }
 
-    public int id_PCAM { get; set; }
+    public string Name { get; set; }
 
-    public int orders_name { get; set; }
+    public int ID { get; set; }
 
+    public string Owner { get; set; }
 
-
-    public virtual regist regist { get; set; }
+    public int OwnerID { get; set; }
 
 }
 

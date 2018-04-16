@@ -68,21 +68,12 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="krm_ind" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
-        <EntityType Name="orders">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_PCAM" Type="int" Nullable="false" />
-          <Property Name="orders_name" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="regist">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PCAM" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="id_circuits" Type="int" Nullable="false" />
           <Property Name="id_counters" Type="int" Nullable="false" />
           <Property Name="id_inputs" Type="int" Nullable="false" />
           <Property Name="id_ammeters" Type="int" Nullable="false" />
@@ -94,6 +85,17 @@
           <Property Name="id_country" Type="int" Nullable="false" />
           <Property Name="link" Type="nvarchar(max)" />
           <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="number_of_order" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="voltmeters">
           <Key>
@@ -123,18 +125,6 @@
             </Principal>
             <Dependent Role="regist">
               <PropertyRef Name="id_bloks" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_to_circuits">
-          <End Role="circuits" Type="Self.circuits" Multiplicity="1" />
-          <End Role="regist" Type="Self.regist" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="circuits">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="regist">
-              <PropertyRef Name="id_circuits" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -210,18 +200,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_to_regist">
-          <End Role="regist" Type="Self.regist" Multiplicity="1" />
-          <End Role="orders" Type="Self.orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="regist">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orders">
-              <PropertyRef Name="id_PCAM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_to_voltmeters">
           <End Role="voltmeters" Type="Self.voltmeters" Multiplicity="1" />
           <End Role="regist" Type="Self.regist" Multiplicity="*" />
@@ -234,8 +212,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectPCAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище MainDBModelContainer">
           <EntitySet Name="ammeters" EntityType="Self.ammeters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bloks" EntityType="Self.bloks" Schema="dbo" store:Type="Tables" />
@@ -246,8 +255,8 @@
           <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inputs" EntityType="Self.inputs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="krm" EntityType="Self.krm" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="regist" EntityType="Self.regist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="voltmeters" EntityType="Self.voltmeters" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_to_ammeters" Association="Self.FK_to_ammeters">
             <End Role="ammeters" EntitySet="ammeters" />
@@ -255,10 +264,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_to_bloks" Association="Self.FK_to_bloks">
             <End Role="bloks" EntitySet="bloks" />
-            <End Role="regist" EntitySet="regist" />
-          </AssociationSet>
-          <AssociationSet Name="FK_to_circuits" Association="Self.FK_to_circuits">
-            <End Role="circuits" EntitySet="circuits" />
             <End Role="regist" EntitySet="regist" />
           </AssociationSet>
           <AssociationSet Name="FK_to_converters_i" Association="Self.FK_to_converters_i">
@@ -284,10 +289,6 @@
           <AssociationSet Name="FK_to_krm" Association="Self.FK_to_krm">
             <End Role="krm" EntitySet="krm" />
             <End Role="regist" EntitySet="regist" />
-          </AssociationSet>
-          <AssociationSet Name="FK_to_regist" Association="Self.FK_to_regist">
-            <End Role="regist" EntitySet="regist" />
-            <End Role="orders" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="FK_to_voltmeters" Association="Self.FK_to_voltmeters">
             <End Role="voltmeters" EntitySet="voltmeters" />
@@ -320,7 +321,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="regists" Relationship="Self.FK_to_circuits" FromRole="circuits" ToRole="regist" />
         </EntityType>
         <EntityType Name="converters_i">
           <Key>
@@ -370,22 +370,12 @@
           <Property Name="krm_ind" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="regists" Relationship="Self.FK_to_krm" FromRole="krm" ToRole="regist" />
         </EntityType>
-        <EntityType Name="order">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_PCAM" Type="Int32" Nullable="false" />
-          <Property Name="orders_name" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="regist" Relationship="Self.FK_to_regist" FromRole="orders" ToRole="regist" />
-        </EntityType>
         <EntityType Name="regist">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PCAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="id_circuits" Type="Int32" Nullable="false" />
           <Property Name="id_counters" Type="Int32" Nullable="false" />
           <Property Name="id_inputs" Type="Int32" Nullable="false" />
           <Property Name="id_ammeters" Type="Int32" Nullable="false" />
@@ -399,15 +389,14 @@
           <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ammeter" Relationship="Self.FK_to_ammeters" FromRole="regist" ToRole="ammeters" />
           <NavigationProperty Name="blok" Relationship="Self.FK_to_bloks" FromRole="regist" ToRole="bloks" />
-          <NavigationProperty Name="circuit" Relationship="Self.FK_to_circuits" FromRole="regist" ToRole="circuits" />
           <NavigationProperty Name="converters_i" Relationship="Self.FK_to_converters_i" FromRole="regist" ToRole="converters_i" />
           <NavigationProperty Name="converters_u" Relationship="Self.FK_to_converters_u" FromRole="regist" ToRole="converters_u" />
           <NavigationProperty Name="counter" Relationship="Self.FK_to_counters" FromRole="regist" ToRole="counters" />
           <NavigationProperty Name="country" Relationship="Self.FK_to_country" FromRole="regist" ToRole="country" />
           <NavigationProperty Name="input" Relationship="Self.FK_to_inputs" FromRole="regist" ToRole="inputs" />
           <NavigationProperty Name="krm" Relationship="Self.FK_to_krm" FromRole="regist" ToRole="krm" />
-          <NavigationProperty Name="orders" Relationship="Self.FK_to_regist" FromRole="regist" ToRole="orders" />
           <NavigationProperty Name="voltmeter" Relationship="Self.FK_to_voltmeters" FromRole="regist" ToRole="voltmeters" />
+          <Property Name="number_of_order" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="voltmeter">
           <Key>
@@ -438,18 +427,6 @@
             </Principal>
             <Dependent Role="regist">
               <PropertyRef Name="id_bloks" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_to_circuits">
-          <End Role="circuits" Type="Self.circuit" Multiplicity="1" />
-          <End Role="regist" Type="Self.regist" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="circuits">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="regist">
-              <PropertyRef Name="id_circuits" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -525,18 +502,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_to_regist">
-          <End Role="regist" Type="Self.regist" Multiplicity="1" />
-          <End Role="orders" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="regist">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orders">
-              <PropertyRef Name="id_PCAM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_to_voltmeters">
           <End Role="voltmeters" Type="Self.voltmeter" Multiplicity="1" />
           <End Role="regist" Type="Self.regist" Multiplicity="*" />
@@ -559,7 +524,6 @@
           <EntitySet Name="countries" EntityType="Self.country" />
           <EntitySet Name="inputs" EntityType="Self.input" />
           <EntitySet Name="krms" EntityType="Self.krm" />
-          <EntitySet Name="orders" EntityType="Self.order" />
           <EntitySet Name="regists" EntityType="Self.regist" />
           <EntitySet Name="voltmeters" EntityType="Self.voltmeter" />
           <AssociationSet Name="FK_to_ammeters" Association="Self.FK_to_ammeters">
@@ -568,10 +532,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_to_bloks" Association="Self.FK_to_bloks">
             <End Role="bloks" EntitySet="bloks" />
-            <End Role="regist" EntitySet="regists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_to_circuits" Association="Self.FK_to_circuits">
-            <End Role="circuits" EntitySet="circuits" />
             <End Role="regist" EntitySet="regists" />
           </AssociationSet>
           <AssociationSet Name="FK_to_converters_i" Association="Self.FK_to_converters_i">
@@ -597,10 +557,6 @@
           <AssociationSet Name="FK_to_krm" Association="Self.FK_to_krm">
             <End Role="krm" EntitySet="krms" />
             <End Role="regist" EntitySet="regists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_to_regist" Association="Self.FK_to_regist">
-            <End Role="regist" EntitySet="regists" />
-            <End Role="orders" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="FK_to_voltmeters" Association="Self.FK_to_voltmeters">
             <End Role="voltmeters" EntitySet="voltmeters" />
@@ -638,6 +594,37 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="sysdiagrams" EntityType="MainDBModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition1" ReturnType="Collection(MainDBModel.sp_helpdiagramdefinition1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams1" ReturnType="Collection(MainDBModel.sp_helpdiagrams1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams1" />
         </EntityContainer>
         <ComplexType Name="SelectAll_Result">
           <Property Type="String" Name="PCAM" Nullable="false" />
@@ -662,6 +649,27 @@
           <Property Type="Binary" Name="definition" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
           <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -746,21 +754,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="MainDBModel.order">
-              <MappingFragment StoreEntitySet="orders">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_PCAM" ColumnName="id_PCAM" />
-                <ScalarProperty Name="orders_name" ColumnName="orders_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="regists">
             <EntityTypeMapping TypeName="MainDBModel.regist">
               <MappingFragment StoreEntitySet="regist">
+                <ScalarProperty Name="number_of_order" ColumnName="number_of_order" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="PCAM" ColumnName="PCAM" />
-                <ScalarProperty Name="id_circuits" ColumnName="id_circuits" />
                 <ScalarProperty Name="id_counters" ColumnName="id_counters" />
                 <ScalarProperty Name="id_inputs" ColumnName="id_inputs" />
                 <ScalarProperty Name="id_ammeters" ColumnName="id_ammeters" />
@@ -809,6 +808,41 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MainDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="Хранилище MainDBModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="Хранилище MainDBModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="Хранилище MainDBModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="Хранилище MainDBModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MainDBModel.sp_helpdiagramdefinition1_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="Хранилище MainDBModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MainDBModel.sp_helpdiagrams1_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="Хранилище MainDBModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="Хранилище MainDBModel.sp_upgraddiagrams" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

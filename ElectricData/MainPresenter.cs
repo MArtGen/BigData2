@@ -42,6 +42,7 @@ namespace ElectricData
             _search.Select_Extra += _search_SelectOfExtra;
             _search.OpenDataEditor += _search_OpenDataEditor;
             _search.BackToSelect += _connection_OpenSelect;
+            _search.MessageOfSearch += _search_MessageOfSearch;
 
             _editor.SaveChanges += _editor_SaveChanges;
             _editor.TableChange += _editor_TableChange;
@@ -64,6 +65,11 @@ namespace ElectricData
             formOfSearch.Show();
         }
         #endregion
+
+        private void _search_MessageOfSearch(object sender, EventArgs e)
+        {
+            _messageService.ShowMessage(_search.Message);
+        }
 
         private void _search_SelectOfExtra(object sender, EventArgs e)
         {

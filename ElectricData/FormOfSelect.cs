@@ -27,6 +27,11 @@ namespace ElectricData
             Application.Exit();
         }
 
+        private void FormOfSelect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void SelectSort_button_Click(object sender, EventArgs e)
         {
             if (SelectOfSort_box.Text == "Учет электроэнергии")

@@ -93,9 +93,6 @@
     <Compile Include="krm.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="order.cs">
-      <DependentUpon>ElectricModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="regist.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
@@ -106,10 +103,19 @@
     <Compile Include="SelectPCAM_Result.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition1_Result.cs">
+      <DependentUpon>ElectricModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagrams1_Result.cs">
+      <DependentUpon>ElectricModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ElectricModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>ElectricModel.tt</DependentUpon>
     </Compile>
     <Compile Include="voltmeter.cs">

@@ -64,6 +64,18 @@
             this.OpenFolder_button = new MetroFramework.Controls.MetroButton();
             this.ExitOfSearch_button = new MetroFramework.Controls.MetroButton();
             this.GridViewOfSearch = new System.Windows.Forms.DataGridView();
+            this.pCAMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number_of_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.counter_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inputs_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bloks_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ammeters_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conv_i = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conv_u = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.country_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.krm_ind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.volt_ind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.selectPCAMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.extra_text = new MetroFramework.Controls.MetroTextBox();
             this.orders_label = new MetroFramework.Controls.MetroLabel();
@@ -79,10 +91,10 @@
             this.converters_uTableAdapter = new ElectricData.MainDBDataSetTableAdapters.converters_uTableAdapter();
             this.krmTableAdapter = new ElectricData.MainDBDataSetTableAdapters.krmTableAdapter();
             this.countryTableAdapter = new ElectricData.MainDBDataSetTableAdapters.countryTableAdapter();
-            this.selectPCAMBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pCAMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ordersnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectCircuit_button = new MetroFramework.Controls.MetroButton();
+            this.selectAllTableAdapter = new ElectricData.MainDBDataSetTableAdapters.SelectAllTableAdapter();
+            this.Search_button = new MetroFramework.Controls.MetroButton();
+            this.Reset_button = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_PCAM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_counters)).BeginInit();
@@ -95,8 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_voltmeters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_country)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewOfSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectPCAMBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selectPCAMBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // pcam_box
@@ -110,7 +122,7 @@
             this.pcam_box.ItemHeight = 23;
             this.pcam_box.Location = new System.Drawing.Point(157, 63);
             this.pcam_box.Name = "pcam_box";
-            this.pcam_box.Size = new System.Drawing.Size(405, 29);
+            this.pcam_box.Size = new System.Drawing.Size(292, 29);
             this.pcam_box.TabIndex = 0;
             // 
             // bindingSource_PCAM
@@ -134,6 +146,7 @@
             // 
             // counters_box
             // 
+            this.counters_box.AccessibleName = "Счётчики";
             this.counters_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -143,7 +156,7 @@
             this.counters_box.ItemHeight = 23;
             this.counters_box.Location = new System.Drawing.Point(157, 98);
             this.counters_box.Name = "counters_box";
-            this.counters_box.Size = new System.Drawing.Size(405, 29);
+            this.counters_box.Size = new System.Drawing.Size(292, 29);
             this.counters_box.TabIndex = 2;
             // 
             // bindingSource_counters
@@ -162,6 +175,7 @@
             // 
             // bloks_box
             // 
+            this.bloks_box.AccessibleName = "Колодка";
             this.bloks_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -171,7 +185,7 @@
             this.bloks_box.ItemHeight = 23;
             this.bloks_box.Location = new System.Drawing.Point(157, 133);
             this.bloks_box.Name = "bloks_box";
-            this.bloks_box.Size = new System.Drawing.Size(405, 29);
+            this.bloks_box.Size = new System.Drawing.Size(292, 29);
             this.bloks_box.TabIndex = 4;
             // 
             // bindingSource_bloks
@@ -190,6 +204,7 @@
             // 
             // amper_box
             // 
+            this.amper_box.AccessibleName = "Амперметры";
             this.amper_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.amper_box.DataSource = this.bindingSource_ammeters;
@@ -217,6 +232,7 @@
             // 
             // inputs_box
             // 
+            this.inputs_box.AccessibleName = "Ввод";
             this.inputs_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.inputs_box.DataSource = this.bindingSource_inputs;
@@ -244,6 +260,7 @@
             // 
             // convertI_box
             // 
+            this.convertI_box.AccessibleName = "Преобразователь I";
             this.convertI_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.convertI_box.DataSource = this.bindingSource_conv_I;
@@ -271,6 +288,7 @@
             // 
             // convertU_box
             // 
+            this.convertU_box.AccessibleName = "Преобразователь U";
             this.convertU_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.convertU_box.DataSource = this.bindingSource_conv_U;
@@ -298,6 +316,7 @@
             // 
             // krm_box
             // 
+            this.krm_box.AccessibleName = "КРМ";
             this.krm_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.krm_box.DataSource = this.bindingSource_krm;
@@ -325,6 +344,7 @@
             // 
             // volt_box
             // 
+            this.volt_box.AccessibleName = "Вольтметр";
             this.volt_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.volt_box.DataSource = this.bindingSource_voltmeters;
@@ -352,6 +372,7 @@
             // 
             // country_box
             // 
+            this.country_box.AccessibleName = "Страна";
             this.country_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.country_box.DataSource = this.bindingSource_country;
@@ -380,7 +401,7 @@
             // DataEditor_button
             // 
             this.DataEditor_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DataEditor_button.Location = new System.Drawing.Point(24, 429);
+            this.DataEditor_button.Location = new System.Drawing.Point(30, 429);
             this.DataEditor_button.Name = "DataEditor_button";
             this.DataEditor_button.Size = new System.Drawing.Size(120, 70);
             this.DataEditor_button.TabIndex = 21;
@@ -388,7 +409,7 @@
             // 
             // OpenFolder_button
             // 
-            this.OpenFolder_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.OpenFolder_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OpenFolder_button.Location = new System.Drawing.Point(167, 429);
             this.OpenFolder_button.Name = "OpenFolder_button";
             this.OpenFolder_button.Size = new System.Drawing.Size(120, 70);
@@ -415,14 +436,117 @@
             this.GridViewOfSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridViewOfSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pCAMDataGridViewTextBoxColumn,
-            this.ordersnameDataGridViewTextBoxColumn});
-            this.GridViewOfSearch.DataSource = this.selectPCAMBindingSource1;
+            this.number_of_order,
+            this.counter_name,
+            this.inputs_count,
+            this.bloks_name,
+            this.ammeters_count,
+            this.conv_i,
+            this.conv_u,
+            this.country_name,
+            this.krm_ind,
+            this.volt_ind});
+            this.GridViewOfSearch.DataSource = this.selectAllBindingSource;
             this.GridViewOfSearch.Location = new System.Drawing.Point(350, 202);
             this.GridViewOfSearch.Name = "GridViewOfSearch";
             this.GridViewOfSearch.ReadOnly = true;
             this.GridViewOfSearch.RowHeadersVisible = false;
-            this.GridViewOfSearch.Size = new System.Drawing.Size(211, 140);
+            this.GridViewOfSearch.Size = new System.Drawing.Size(214, 140);
             this.GridViewOfSearch.TabIndex = 24;
+            // 
+            // pCAMDataGridViewTextBoxColumn
+            // 
+            this.pCAMDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pCAMDataGridViewTextBoxColumn.DataPropertyName = "PCAM";
+            this.pCAMDataGridViewTextBoxColumn.Frozen = true;
+            this.pCAMDataGridViewTextBoxColumn.HeaderText = "PCAM";
+            this.pCAMDataGridViewTextBoxColumn.Name = "pCAMDataGridViewTextBoxColumn";
+            this.pCAMDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pCAMDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // number_of_order
+            // 
+            this.number_of_order.DataPropertyName = "number_of_order";
+            this.number_of_order.Frozen = true;
+            this.number_of_order.HeaderText = "Номер заказа";
+            this.number_of_order.Name = "number_of_order";
+            this.number_of_order.ReadOnly = true;
+            // 
+            // counter_name
+            // 
+            this.counter_name.DataPropertyName = "counter_name";
+            this.counter_name.HeaderText = "Счётчик";
+            this.counter_name.Name = "counter_name";
+            this.counter_name.ReadOnly = true;
+            // 
+            // inputs_count
+            // 
+            this.inputs_count.DataPropertyName = "inputs_count";
+            this.inputs_count.HeaderText = "Ввод";
+            this.inputs_count.Name = "inputs_count";
+            this.inputs_count.ReadOnly = true;
+            this.inputs_count.Visible = false;
+            // 
+            // bloks_name
+            // 
+            this.bloks_name.DataPropertyName = "bloks_name";
+            this.bloks_name.HeaderText = "Колодка";
+            this.bloks_name.Name = "bloks_name";
+            this.bloks_name.ReadOnly = true;
+            this.bloks_name.Visible = false;
+            // 
+            // ammeters_count
+            // 
+            this.ammeters_count.DataPropertyName = "ammeters_count";
+            this.ammeters_count.HeaderText = "Амперметры";
+            this.ammeters_count.Name = "ammeters_count";
+            this.ammeters_count.ReadOnly = true;
+            this.ammeters_count.Visible = false;
+            // 
+            // conv_i
+            // 
+            this.conv_i.DataPropertyName = "conv_i";
+            this.conv_i.HeaderText = "Преобразователи I";
+            this.conv_i.Name = "conv_i";
+            this.conv_i.ReadOnly = true;
+            this.conv_i.Visible = false;
+            // 
+            // conv_u
+            // 
+            this.conv_u.DataPropertyName = "conv_u";
+            this.conv_u.HeaderText = "Преобразователи U";
+            this.conv_u.Name = "conv_u";
+            this.conv_u.ReadOnly = true;
+            this.conv_u.Visible = false;
+            // 
+            // country_name
+            // 
+            this.country_name.DataPropertyName = "country_name";
+            this.country_name.HeaderText = "Страна";
+            this.country_name.Name = "country_name";
+            this.country_name.ReadOnly = true;
+            this.country_name.Visible = false;
+            // 
+            // krm_ind
+            // 
+            this.krm_ind.DataPropertyName = "krm_ind";
+            this.krm_ind.HeaderText = "КРМ";
+            this.krm_ind.Name = "krm_ind";
+            this.krm_ind.ReadOnly = true;
+            this.krm_ind.Visible = false;
+            // 
+            // volt_ind
+            // 
+            this.volt_ind.DataPropertyName = "volt_ind";
+            this.volt_ind.HeaderText = "Вольтметры";
+            this.volt_ind.Name = "volt_ind";
+            this.volt_ind.ReadOnly = true;
+            this.volt_ind.Visible = false;
+            // 
+            // selectAllBindingSource
+            // 
+            this.selectAllBindingSource.DataMember = "SelectAll";
+            this.selectAllBindingSource.DataSource = this.mainDBDataSet;
             // 
             // extra_text
             // 
@@ -432,7 +556,7 @@
             this.extra_text.FontWeight = MetroFramework.MetroTextBoxWeight.Bold;
             this.extra_text.Location = new System.Drawing.Point(350, 384);
             this.extra_text.Name = "extra_text";
-            this.extra_text.Size = new System.Drawing.Size(211, 30);
+            this.extra_text.Size = new System.Drawing.Size(214, 30);
             this.extra_text.TabIndex = 25;
             // 
             // orders_label
@@ -498,32 +622,9 @@
             // 
             this.countryTableAdapter.ClearBeforeFill = true;
             // 
-            // selectPCAMBindingSource1
-            // 
-            this.selectPCAMBindingSource1.DataMember = "SelectPCAM";
-            this.selectPCAMBindingSource1.DataSource = this.mainDBDataSet;
-            // 
-            // pCAMDataGridViewTextBoxColumn
-            // 
-            this.pCAMDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pCAMDataGridViewTextBoxColumn.DataPropertyName = "PCAM";
-            this.pCAMDataGridViewTextBoxColumn.HeaderText = "PCAM";
-            this.pCAMDataGridViewTextBoxColumn.Name = "pCAMDataGridViewTextBoxColumn";
-            this.pCAMDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pCAMDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // ordersnameDataGridViewTextBoxColumn
-            // 
-            this.ordersnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ordersnameDataGridViewTextBoxColumn.DataPropertyName = "orders_name";
-            this.ordersnameDataGridViewTextBoxColumn.HeaderText = "Номер заказа";
-            this.ordersnameDataGridViewTextBoxColumn.Name = "ordersnameDataGridViewTextBoxColumn";
-            this.ordersnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ordersnameDataGridViewTextBoxColumn.Width = 96;
-            // 
             // SelectCircuit_button
             // 
-            this.SelectCircuit_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.SelectCircuit_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectCircuit_button.Location = new System.Drawing.Point(305, 429);
             this.SelectCircuit_button.Name = "SelectCircuit_button";
             this.SelectCircuit_button.Size = new System.Drawing.Size(120, 70);
@@ -531,11 +632,37 @@
             this.SelectCircuit_button.Text = "Выбрать схему";
             this.SelectCircuit_button.Click += new System.EventHandler(this.SelectCircuit_button_Click);
             // 
+            // selectAllTableAdapter
+            // 
+            this.selectAllTableAdapter.ClearBeforeFill = true;
+            // 
+            // Search_button
+            // 
+            this.Search_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_button.Location = new System.Drawing.Point(465, 63);
+            this.Search_button.Name = "Search_button";
+            this.Search_button.Size = new System.Drawing.Size(99, 54);
+            this.Search_button.TabIndex = 28;
+            this.Search_button.Text = "Поиск";
+            this.Search_button.Click += new System.EventHandler(this.Search_button_Click);
+            // 
+            // Reset_button
+            // 
+            this.Reset_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Reset_button.Location = new System.Drawing.Point(465, 133);
+            this.Reset_button.Name = "Reset_button";
+            this.Reset_button.Size = new System.Drawing.Size(99, 54);
+            this.Reset_button.TabIndex = 29;
+            this.Reset_button.Text = "Сброс";
+            this.Reset_button.Click += new System.EventHandler(this.Reset_button_Click);
+            // 
             // FormOfSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 520);
+            this.Controls.Add(this.Reset_button);
+            this.Controls.Add(this.Search_button);
             this.Controls.Add(this.SelectCircuit_button);
             this.Controls.Add(this.extra_label);
             this.Controls.Add(this.orders_label);
@@ -564,9 +691,10 @@
             this.Controls.Add(this.counters_box);
             this.Controls.Add(this.pcam_label);
             this.Controls.Add(this.pcam_box);
-            this.MinimumSize = new System.Drawing.Size(570, 520);
+            this.MinimumSize = new System.Drawing.Size(584, 520);
             this.Name = "FormOfSearch";
             this.Text = "Учёт электроэнергии";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormOfSearch_FormClosed);
             this.Load += new System.EventHandler(this.FormOfSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_PCAM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
@@ -580,8 +708,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_voltmeters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_country)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewOfSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectAllBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectPCAMBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selectPCAMBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,10 +767,22 @@
         private MainDBDataSetTableAdapters.krmTableAdapter krmTableAdapter;
         private System.Windows.Forms.BindingSource bindingSource_country;
         private MainDBDataSetTableAdapters.countryTableAdapter countryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pCAMDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ordersnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource selectPCAMBindingSource1;
+        private System.Windows.Forms.BindingSource selectAllBindingSource;
         private MetroFramework.Controls.MetroButton SelectCircuit_button;
+        private MainDBDataSetTableAdapters.SelectAllTableAdapter selectAllTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pCAMDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_of_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn counter_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inputs_count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bloks_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ammeters_count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn conv_i;
+        private System.Windows.Forms.DataGridViewTextBoxColumn conv_u;
+        private System.Windows.Forms.DataGridViewTextBoxColumn country_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn krm_ind;
+        private System.Windows.Forms.DataGridViewTextBoxColumn volt_ind;
+        private MetroFramework.Controls.MetroButton Search_button;
+        private MetroFramework.Controls.MetroButton Reset_button;
     }
 }
 

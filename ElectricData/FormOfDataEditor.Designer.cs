@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOfDataEditor));
             this.GridViewOfDataEditor = new System.Windows.Forms.DataGridView();
-            this.bindingSource_SelectAll = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new ElectricData.MainDBDataSet();
             this.bindingNavigatorOfDataEditor = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -45,30 +44,74 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.SaveData_button = new MetroFramework.Controls.MetroButton();
-            this.ExitOfDataEditor_button = new MetroFramework.Controls.MetroButton();
-            this.SelectOfTable_box = new MetroFramework.Controls.MetroComboBox();
+            this.table_select_box = new System.Windows.Forms.ToolStripComboBox();
+            this.Save_button = new System.Windows.Forms.ToolStripButton();
+            this.Exit_button = new System.Windows.Forms.ToolStripButton();
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableName_label = new MetroFramework.Controls.MetroLabel();
-            this.selectAllTableAdapter = new ElectricData.MainDBDataSetTableAdapters.SelectAllTableAdapter();
-            this.pCAMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.counternameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inputscountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bloksnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ammeterscountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conviDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.convuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countrynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.krmindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.voltindDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.registTableAdapter = new ElectricData.MainDBDataSetTableAdapters.registTableAdapter();
+            this.countersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.countersTableAdapter = new ElectricData.MainDBDataSetTableAdapters.countersTableAdapter();
+            this.id_counters = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.number_of_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_inputs = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_ammeters = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_bloks = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_converters_i = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_converters_u = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_krm = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_voltmeters = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.id_country = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.link = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inputsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.inputsTableAdapter = new ElectricData.MainDBDataSetTableAdapters.inputsTableAdapter();
+            this.ammetersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ammetersTableAdapter = new ElectricData.MainDBDataSetTableAdapters.ammetersTableAdapter();
+            this.bloksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bloksTableAdapter = new ElectricData.MainDBDataSetTableAdapters.bloksTableAdapter();
+            this.convertersiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.converters_iTableAdapter = new ElectricData.MainDBDataSetTableAdapters.converters_iTableAdapter();
+            this.convertersuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.converters_uTableAdapter = new ElectricData.MainDBDataSetTableAdapters.converters_uTableAdapter();
+            this.krmBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.krmTableAdapter = new ElectricData.MainDBDataSetTableAdapters.krmTableAdapter();
+            this.voltmetersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.voltmetersTableAdapter = new ElectricData.MainDBDataSetTableAdapters.voltmetersTableAdapter();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.countryTableAdapter = new ElectricData.MainDBDataSetTableAdapters.countryTableAdapter();
+            this.pCAMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn7 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn9 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewComboBoxColumn10 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewOfDataEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_SelectAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorOfDataEditor)).BeginInit();
             this.bindingNavigatorOfDataEditor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ammetersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bloksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convertersiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convertersuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krmBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voltmetersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // GridViewOfDataEditor
@@ -81,27 +124,23 @@
             this.GridViewOfDataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridViewOfDataEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pCAMDataGridViewTextBoxColumn,
-            this.counternameDataGridViewTextBoxColumn,
-            this.inputscountDataGridViewTextBoxColumn,
-            this.bloksnameDataGridViewTextBoxColumn,
-            this.ammeterscountDataGridViewTextBoxColumn,
-            this.conviDataGridViewTextBoxColumn,
-            this.convuDataGridViewTextBoxColumn,
-            this.countrynameDataGridViewTextBoxColumn,
-            this.krmindDataGridViewTextBoxColumn,
-            this.voltindDataGridViewTextBoxColumn,
-            this.linkDataGridViewTextBoxColumn,
-            this.note});
-            this.GridViewOfDataEditor.DataSource = this.bindingSource_SelectAll;
+            this.dataGridViewComboBoxColumn2,
+            this.dataGridViewComboBoxColumn3,
+            this.dataGridViewComboBoxColumn4,
+            this.dataGridViewComboBoxColumn5,
+            this.dataGridViewComboBoxColumn6,
+            this.dataGridViewComboBoxColumn7,
+            this.dataGridViewComboBoxColumn8,
+            this.dataGridViewComboBoxColumn9,
+            this.dataGridViewComboBoxColumn10,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.GridViewOfDataEditor.DataSource = this.registBindingSource;
             this.GridViewOfDataEditor.Location = new System.Drawing.Point(24, 86);
             this.GridViewOfDataEditor.Name = "GridViewOfDataEditor";
-            this.GridViewOfDataEditor.Size = new System.Drawing.Size(523, 208);
+            this.GridViewOfDataEditor.Size = new System.Drawing.Size(523, 311);
             this.GridViewOfDataEditor.TabIndex = 0;
-            // 
-            // bindingSource_SelectAll
-            // 
-            this.bindingSource_SelectAll.DataMember = "SelectAll";
-            this.bindingSource_SelectAll.DataSource = this.mainDBDataSet;
             // 
             // mainDBDataSet
             // 
@@ -111,6 +150,7 @@
             // bindingNavigatorOfDataEditor
             // 
             this.bindingNavigatorOfDataEditor.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigatorOfDataEditor.BindingSource = this.registBindingSource;
             this.bindingNavigatorOfDataEditor.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigatorOfDataEditor.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigatorOfDataEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -124,7 +164,10 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
+            this.bindingNavigatorDeleteItem,
+            this.table_select_box,
+            this.Save_button,
+            this.Exit_button});
             this.bindingNavigatorOfDataEditor.Location = new System.Drawing.Point(20, 60);
             this.bindingNavigatorOfDataEditor.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorOfDataEditor.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -134,7 +177,7 @@
             this.bindingNavigatorOfDataEditor.PositionItem = this.bindingNavigatorPositionItem;
             this.bindingNavigatorOfDataEditor.Size = new System.Drawing.Size(530, 25);
             this.bindingNavigatorOfDataEditor.TabIndex = 1;
-            this.bindingNavigatorOfDataEditor.Text = "bindingNavigator1";
+            this.bindingNavigatorOfDataEditor.Text = "bindingNavigatorDE";
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -221,150 +264,377 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // SaveData_button
+            // table_select_box
             // 
-            this.SaveData_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveData_button.Location = new System.Drawing.Point(207, 343);
-            this.SaveData_button.Name = "SaveData_button";
-            this.SaveData_button.Size = new System.Drawing.Size(171, 66);
-            this.SaveData_button.TabIndex = 2;
-            this.SaveData_button.Text = "Сохранить";
+            this.table_select_box.Items.AddRange(new object[] {
+            "РСАМ (полная таблица)",
+            "Счётчики",
+            "Колодки",
+            "Ввод",
+            "Амперметры",
+            "Вольтметры",
+            "Преобразователи I",
+            "Преобразователи U",
+            "КРМ",
+            "Заказы",
+            "Страна"});
+            this.table_select_box.Name = "table_select_box";
+            this.table_select_box.Size = new System.Drawing.Size(170, 25);
             // 
-            // ExitOfDataEditor_button
+            // Save_button
             // 
-            this.ExitOfDataEditor_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitOfDataEditor_button.Location = new System.Drawing.Point(384, 343);
-            this.ExitOfDataEditor_button.Name = "ExitOfDataEditor_button";
-            this.ExitOfDataEditor_button.Size = new System.Drawing.Size(163, 66);
-            this.ExitOfDataEditor_button.TabIndex = 4;
-            this.ExitOfDataEditor_button.Text = "Выход";
+            this.Save_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Save_button.Image = ((System.Drawing.Image)(resources.GetObject("Save_button.Image")));
+            this.Save_button.ImageTransparentColor = System.Drawing.Color.DarkCyan;
+            this.Save_button.Name = "Save_button";
+            this.Save_button.Size = new System.Drawing.Size(23, 22);
+            this.Save_button.Text = "Save";
+            this.Save_button.Click += new System.EventHandler(this.Save_button_Click);
             // 
-            // SelectOfTable_box
+            // Exit_button
             // 
-            this.SelectOfTable_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectOfTable_box.DataSource = this.mainDBDataSetBindingSource;
-            this.SelectOfTable_box.FormattingEnabled = true;
-            this.SelectOfTable_box.ItemHeight = 23;
-            this.SelectOfTable_box.Location = new System.Drawing.Point(94, 300);
-            this.SelectOfTable_box.Name = "SelectOfTable_box";
-            this.SelectOfTable_box.Size = new System.Drawing.Size(453, 29);
-            this.SelectOfTable_box.TabIndex = 5;
+            this.Exit_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Exit_button.Image = ((System.Drawing.Image)(resources.GetObject("Exit_button.Image")));
+            this.Exit_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Exit_button.Name = "Exit_button";
+            this.Exit_button.Size = new System.Drawing.Size(23, 22);
+            this.Exit_button.Text = "BackToSearch";
             // 
             // mainDBDataSetBindingSource
             // 
             this.mainDBDataSetBindingSource.DataSource = this.mainDBDataSet;
             this.mainDBDataSetBindingSource.Position = 0;
             // 
-            // tableName_label
+            // registBindingSource
             // 
-            this.tableName_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableName_label.AutoSize = true;
-            this.tableName_label.Location = new System.Drawing.Point(24, 310);
-            this.tableName_label.Name = "tableName_label";
-            this.tableName_label.Size = new System.Drawing.Size(64, 19);
-            this.tableName_label.TabIndex = 8;
-            this.tableName_label.Text = "Таблица:";
+            this.registBindingSource.DataMember = "regist";
+            this.registBindingSource.DataSource = this.mainDBDataSet;
             // 
-            // selectAllTableAdapter
+            // registTableAdapter
             // 
-            this.selectAllTableAdapter.ClearBeforeFill = true;
+            this.registTableAdapter.ClearBeforeFill = true;
             // 
-            // pCAMDataGridViewTextBoxColumn
+            // countersBindingSource
             // 
-            this.pCAMDataGridViewTextBoxColumn.DataPropertyName = "PCAM";
-            this.pCAMDataGridViewTextBoxColumn.HeaderText = "PCAM";
-            this.pCAMDataGridViewTextBoxColumn.Name = "pCAMDataGridViewTextBoxColumn";
+            this.countersBindingSource.DataMember = "counters";
+            this.countersBindingSource.DataSource = this.mainDBDataSet;
             // 
-            // counternameDataGridViewTextBoxColumn
+            // countersTableAdapter
             // 
-            this.counternameDataGridViewTextBoxColumn.DataPropertyName = "counter_name";
-            this.counternameDataGridViewTextBoxColumn.HeaderText = "Счётчик";
-            this.counternameDataGridViewTextBoxColumn.Name = "counternameDataGridViewTextBoxColumn";
+            this.countersTableAdapter.ClearBeforeFill = true;
             // 
-            // inputscountDataGridViewTextBoxColumn
+            // id_counters
             // 
-            this.inputscountDataGridViewTextBoxColumn.DataPropertyName = "inputs_count";
-            this.inputscountDataGridViewTextBoxColumn.HeaderText = "Ввод";
-            this.inputscountDataGridViewTextBoxColumn.Name = "inputscountDataGridViewTextBoxColumn";
+            this.id_counters.DataPropertyName = "id_counters";
+            this.id_counters.DataSource = this.registBindingSource;
+            this.id_counters.DisplayMember = "id_counters";
+            this.id_counters.HeaderText = "id_counters";
+            this.id_counters.Name = "id_counters";
+            this.id_counters.ValueMember = "counter_name";
             // 
-            // bloksnameDataGridViewTextBoxColumn
+            // number_of_order
             // 
-            this.bloksnameDataGridViewTextBoxColumn.DataPropertyName = "bloks_name";
-            this.bloksnameDataGridViewTextBoxColumn.HeaderText = "Колодка";
-            this.bloksnameDataGridViewTextBoxColumn.Name = "bloksnameDataGridViewTextBoxColumn";
-            // 
-            // ammeterscountDataGridViewTextBoxColumn
-            // 
-            this.ammeterscountDataGridViewTextBoxColumn.DataPropertyName = "ammeters_count";
-            this.ammeterscountDataGridViewTextBoxColumn.HeaderText = "Амперметры";
-            this.ammeterscountDataGridViewTextBoxColumn.Name = "ammeterscountDataGridViewTextBoxColumn";
-            // 
-            // conviDataGridViewTextBoxColumn
-            // 
-            this.conviDataGridViewTextBoxColumn.DataPropertyName = "conv_i";
-            this.conviDataGridViewTextBoxColumn.HeaderText = "Преобразователи тока";
-            this.conviDataGridViewTextBoxColumn.Name = "conviDataGridViewTextBoxColumn";
-            // 
-            // convuDataGridViewTextBoxColumn
-            // 
-            this.convuDataGridViewTextBoxColumn.DataPropertyName = "conv_u";
-            this.convuDataGridViewTextBoxColumn.HeaderText = "Преобразователи напряжения";
-            this.convuDataGridViewTextBoxColumn.Name = "convuDataGridViewTextBoxColumn";
-            // 
-            // countrynameDataGridViewTextBoxColumn
-            // 
-            this.countrynameDataGridViewTextBoxColumn.DataPropertyName = "country_name";
-            this.countrynameDataGridViewTextBoxColumn.HeaderText = "Страна";
-            this.countrynameDataGridViewTextBoxColumn.Name = "countrynameDataGridViewTextBoxColumn";
-            // 
-            // krmindDataGridViewTextBoxColumn
-            // 
-            this.krmindDataGridViewTextBoxColumn.DataPropertyName = "krm_ind";
-            this.krmindDataGridViewTextBoxColumn.HeaderText = "КРМ";
-            this.krmindDataGridViewTextBoxColumn.Name = "krmindDataGridViewTextBoxColumn";
-            // 
-            // voltindDataGridViewTextBoxColumn
-            // 
-            this.voltindDataGridViewTextBoxColumn.DataPropertyName = "volt_ind";
-            this.voltindDataGridViewTextBoxColumn.HeaderText = "Вольтметр";
-            this.voltindDataGridViewTextBoxColumn.Name = "voltindDataGridViewTextBoxColumn";
+            this.number_of_order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.number_of_order.DataPropertyName = "number_of_order";
+            this.number_of_order.HeaderText = "Номер заказа";
+            this.number_of_order.Name = "number_of_order";
+            this.number_of_order.Width = 96;
             // 
             // linkDataGridViewTextBoxColumn
             // 
+            this.linkDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.linkDataGridViewTextBoxColumn.DataPropertyName = "link";
             this.linkDataGridViewTextBoxColumn.HeaderText = "Ссылка";
             this.linkDataGridViewTextBoxColumn.Name = "linkDataGridViewTextBoxColumn";
+            this.linkDataGridViewTextBoxColumn.Width = 71;
             // 
             // note
             // 
+            this.note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.note.DataPropertyName = "note";
             this.note.HeaderText = "Дополнительно";
             this.note.Name = "note";
+            this.note.Width = 112;
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.DataPropertyName = "id_counters";
+            this.dataGridViewComboBoxColumn1.HeaderText = "id_counters";
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            // 
+            // id_inputs
+            // 
+            this.id_inputs.DataPropertyName = "id_inputs";
+            this.id_inputs.HeaderText = "id_inputs";
+            this.id_inputs.Name = "id_inputs";
+            // 
+            // id_ammeters
+            // 
+            this.id_ammeters.DataPropertyName = "id_ammeters";
+            this.id_ammeters.HeaderText = "id_ammeters";
+            this.id_ammeters.Name = "id_ammeters";
+            // 
+            // id_bloks
+            // 
+            this.id_bloks.DataPropertyName = "id_bloks";
+            this.id_bloks.HeaderText = "id_bloks";
+            this.id_bloks.Name = "id_bloks";
+            // 
+            // id_converters_i
+            // 
+            this.id_converters_i.DataPropertyName = "id_converters_i";
+            this.id_converters_i.HeaderText = "id_converters_i";
+            this.id_converters_i.Name = "id_converters_i";
+            // 
+            // id_converters_u
+            // 
+            this.id_converters_u.DataPropertyName = "id_converters_u";
+            this.id_converters_u.HeaderText = "id_converters_u";
+            this.id_converters_u.Name = "id_converters_u";
+            // 
+            // id_krm
+            // 
+            this.id_krm.DataPropertyName = "id_krm";
+            this.id_krm.HeaderText = "id_krm";
+            this.id_krm.Name = "id_krm";
+            // 
+            // id_voltmeters
+            // 
+            this.id_voltmeters.DataPropertyName = "id_voltmeters";
+            this.id_voltmeters.HeaderText = "id_voltmeters";
+            this.id_voltmeters.Name = "id_voltmeters";
+            // 
+            // id_country
+            // 
+            this.id_country.DataPropertyName = "id_country";
+            this.id_country.HeaderText = "id_country";
+            this.id_country.Name = "id_country";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "number_of_order";
+            this.dataGridViewTextBoxColumn1.HeaderText = "number_of_order";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // link
+            // 
+            this.link.DataPropertyName = "link";
+            this.link.HeaderText = "link";
+            this.link.Name = "link";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "note";
+            this.dataGridViewTextBoxColumn2.HeaderText = "note";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // inputsBindingSource
+            // 
+            this.inputsBindingSource.DataMember = "inputs";
+            this.inputsBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // inputsTableAdapter
+            // 
+            this.inputsTableAdapter.ClearBeforeFill = true;
+            // 
+            // ammetersBindingSource
+            // 
+            this.ammetersBindingSource.DataMember = "ammeters";
+            this.ammetersBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // ammetersTableAdapter
+            // 
+            this.ammetersTableAdapter.ClearBeforeFill = true;
+            // 
+            // bloksBindingSource
+            // 
+            this.bloksBindingSource.DataMember = "bloks";
+            this.bloksBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // bloksTableAdapter
+            // 
+            this.bloksTableAdapter.ClearBeforeFill = true;
+            // 
+            // convertersiBindingSource
+            // 
+            this.convertersiBindingSource.DataMember = "converters_i";
+            this.convertersiBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // converters_iTableAdapter
+            // 
+            this.converters_iTableAdapter.ClearBeforeFill = true;
+            // 
+            // convertersuBindingSource
+            // 
+            this.convertersuBindingSource.DataMember = "converters_u";
+            this.convertersuBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // converters_uTableAdapter
+            // 
+            this.converters_uTableAdapter.ClearBeforeFill = true;
+            // 
+            // krmBindingSource
+            // 
+            this.krmBindingSource.DataMember = "krm";
+            this.krmBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // krmTableAdapter
+            // 
+            this.krmTableAdapter.ClearBeforeFill = true;
+            // 
+            // voltmetersBindingSource
+            // 
+            this.voltmetersBindingSource.DataMember = "voltmeters";
+            this.voltmetersBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // voltmetersTableAdapter
+            // 
+            this.voltmetersTableAdapter.ClearBeforeFill = true;
+            // 
+            // countryBindingSource
+            // 
+            this.countryBindingSource.DataMember = "country";
+            this.countryBindingSource.DataSource = this.mainDBDataSet;
+            // 
+            // countryTableAdapter
+            // 
+            this.countryTableAdapter.ClearBeforeFill = true;
+            // 
+            // pCAMDataGridViewTextBoxColumn
+            // 
+            this.pCAMDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pCAMDataGridViewTextBoxColumn.DataPropertyName = "PCAM";
+            this.pCAMDataGridViewTextBoxColumn.HeaderText = "PCAM";
+            this.pCAMDataGridViewTextBoxColumn.Name = "pCAMDataGridViewTextBoxColumn";
+            this.pCAMDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // dataGridViewComboBoxColumn2
+            // 
+            this.dataGridViewComboBoxColumn2.DataPropertyName = "id_counters";
+            this.dataGridViewComboBoxColumn2.DataSource = this.countersBindingSource;
+            this.dataGridViewComboBoxColumn2.DisplayMember = "counter_name";
+            this.dataGridViewComboBoxColumn2.HeaderText = "Счётчики";
+            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn3
+            // 
+            this.dataGridViewComboBoxColumn3.DataPropertyName = "id_inputs";
+            this.dataGridViewComboBoxColumn3.DataSource = this.inputsBindingSource;
+            this.dataGridViewComboBoxColumn3.DisplayMember = "inputs_count";
+            this.dataGridViewComboBoxColumn3.HeaderText = "Ввод";
+            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
+            this.dataGridViewComboBoxColumn3.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn4
+            // 
+            this.dataGridViewComboBoxColumn4.DataPropertyName = "id_ammeters";
+            this.dataGridViewComboBoxColumn4.DataSource = this.ammetersBindingSource;
+            this.dataGridViewComboBoxColumn4.DisplayMember = "ammeters_count";
+            this.dataGridViewComboBoxColumn4.HeaderText = "Амперметры";
+            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
+            this.dataGridViewComboBoxColumn4.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn5
+            // 
+            this.dataGridViewComboBoxColumn5.DataPropertyName = "id_bloks";
+            this.dataGridViewComboBoxColumn5.DataSource = this.bloksBindingSource;
+            this.dataGridViewComboBoxColumn5.DisplayMember = "bloks_name";
+            this.dataGridViewComboBoxColumn5.HeaderText = "Колодки";
+            this.dataGridViewComboBoxColumn5.Name = "dataGridViewComboBoxColumn5";
+            this.dataGridViewComboBoxColumn5.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn6
+            // 
+            this.dataGridViewComboBoxColumn6.DataPropertyName = "id_converters_i";
+            this.dataGridViewComboBoxColumn6.DataSource = this.convertersiBindingSource;
+            this.dataGridViewComboBoxColumn6.DisplayMember = "conv_i";
+            this.dataGridViewComboBoxColumn6.HeaderText = "Преобразователи I";
+            this.dataGridViewComboBoxColumn6.Name = "dataGridViewComboBoxColumn6";
+            this.dataGridViewComboBoxColumn6.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn7
+            // 
+            this.dataGridViewComboBoxColumn7.DataPropertyName = "id_converters_u";
+            this.dataGridViewComboBoxColumn7.DataSource = this.convertersuBindingSource;
+            this.dataGridViewComboBoxColumn7.DisplayMember = "conv_u";
+            this.dataGridViewComboBoxColumn7.HeaderText = "Преобразователи U";
+            this.dataGridViewComboBoxColumn7.Name = "dataGridViewComboBoxColumn7";
+            this.dataGridViewComboBoxColumn7.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn8
+            // 
+            this.dataGridViewComboBoxColumn8.DataPropertyName = "id_krm";
+            this.dataGridViewComboBoxColumn8.DataSource = this.krmBindingSource;
+            this.dataGridViewComboBoxColumn8.DisplayMember = "krm_ind";
+            this.dataGridViewComboBoxColumn8.HeaderText = "КРМ";
+            this.dataGridViewComboBoxColumn8.Name = "dataGridViewComboBoxColumn8";
+            this.dataGridViewComboBoxColumn8.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn9
+            // 
+            this.dataGridViewComboBoxColumn9.DataPropertyName = "id_voltmeters";
+            this.dataGridViewComboBoxColumn9.DataSource = this.voltmetersBindingSource;
+            this.dataGridViewComboBoxColumn9.DisplayMember = "volt_ind";
+            this.dataGridViewComboBoxColumn9.HeaderText = "Вольтметры";
+            this.dataGridViewComboBoxColumn9.Name = "dataGridViewComboBoxColumn9";
+            this.dataGridViewComboBoxColumn9.ValueMember = "id";
+            // 
+            // dataGridViewComboBoxColumn10
+            // 
+            this.dataGridViewComboBoxColumn10.DataPropertyName = "id_country";
+            this.dataGridViewComboBoxColumn10.DataSource = this.countryBindingSource;
+            this.dataGridViewComboBoxColumn10.DisplayMember = "country_name";
+            this.dataGridViewComboBoxColumn10.HeaderText = "Страна";
+            this.dataGridViewComboBoxColumn10.Name = "dataGridViewComboBoxColumn10";
+            this.dataGridViewComboBoxColumn10.ValueMember = "id";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "number_of_order";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Номера заказов";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "link";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Ссылка";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "note";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Дополнительно";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
             // FormOfDataEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 420);
-            this.Controls.Add(this.tableName_label);
-            this.Controls.Add(this.SelectOfTable_box);
-            this.Controls.Add(this.ExitOfDataEditor_button);
-            this.Controls.Add(this.SaveData_button);
             this.Controls.Add(this.bindingNavigatorOfDataEditor);
             this.Controls.Add(this.GridViewOfDataEditor);
             this.MinimumSize = new System.Drawing.Size(570, 420);
             this.Name = "FormOfDataEditor";
             this.Text = "Редактор базы данных";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormOfDataEditor_FormClosed);
             this.Load += new System.EventHandler(this.FormOfDataEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridViewOfDataEditor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_SelectAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorOfDataEditor)).EndInit();
             this.bindingNavigatorOfDataEditor.ResumeLayout(false);
             this.bindingNavigatorOfDataEditor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.registBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ammetersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bloksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convertersiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convertersuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krmBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voltmetersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,25 +655,59 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private MetroFramework.Controls.MetroButton SaveData_button;
-        private MetroFramework.Controls.MetroButton ExitOfDataEditor_button;
-        private MetroFramework.Controls.MetroComboBox SelectOfTable_box;
-        private MetroFramework.Controls.MetroLabel tableName_label;
         private System.Windows.Forms.BindingSource mainDBDataSetBindingSource;
         private MainDBDataSet mainDBDataSet;
-        private System.Windows.Forms.BindingSource bindingSource_SelectAll;
-        private MainDBDataSetTableAdapters.SelectAllTableAdapter selectAllTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pCAMDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn counternameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn inputscountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bloksnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ammeterscountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn conviDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn convuDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countrynameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn krmindDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn voltindDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripComboBox table_select_box;
+        private System.Windows.Forms.ToolStripButton Save_button;
+        private System.Windows.Forms.ToolStripButton Exit_button;
+        private System.Windows.Forms.BindingSource registBindingSource;
+        private MainDBDataSetTableAdapters.registTableAdapter registTableAdapter;
+        private System.Windows.Forms.BindingSource countersBindingSource;
+        private MainDBDataSetTableAdapters.countersTableAdapter countersTableAdapter;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_counters;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_of_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn linkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn note;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_inputs;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_ammeters;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_bloks;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_converters_i;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_converters_u;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_krm;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_voltmeters;
+        private System.Windows.Forms.DataGridViewComboBoxColumn id_country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn link;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.BindingSource inputsBindingSource;
+        private MainDBDataSetTableAdapters.inputsTableAdapter inputsTableAdapter;
+        private System.Windows.Forms.BindingSource ammetersBindingSource;
+        private MainDBDataSetTableAdapters.ammetersTableAdapter ammetersTableAdapter;
+        private System.Windows.Forms.BindingSource bloksBindingSource;
+        private MainDBDataSetTableAdapters.bloksTableAdapter bloksTableAdapter;
+        private System.Windows.Forms.BindingSource convertersiBindingSource;
+        private MainDBDataSetTableAdapters.converters_iTableAdapter converters_iTableAdapter;
+        private System.Windows.Forms.BindingSource convertersuBindingSource;
+        private MainDBDataSetTableAdapters.converters_uTableAdapter converters_uTableAdapter;
+        private System.Windows.Forms.BindingSource krmBindingSource;
+        private MainDBDataSetTableAdapters.krmTableAdapter krmTableAdapter;
+        private System.Windows.Forms.BindingSource voltmetersBindingSource;
+        private MainDBDataSetTableAdapters.voltmetersTableAdapter voltmetersTableAdapter;
+        private System.Windows.Forms.BindingSource countryBindingSource;
+        private MainDBDataSetTableAdapters.countryTableAdapter countryTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pCAMDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn4;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn5;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn6;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn7;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn9;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

@@ -14,20 +14,18 @@
         <EntityTypeShape EntityType="MainDBModel.country" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MainDBModel.input" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MainDBModel.krm" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MainDBModel.order" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MainDBModel.regist" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MainDBModel.voltmeter" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />
         <AssociationConnector Association="MainDBModel.FK_to_ammeters" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_bloks" ManuallyRouted="false" />
-        <AssociationConnector Association="MainDBModel.FK_to_circuits" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_converters_i" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_converters_u" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_counters" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_country" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_inputs" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_krm" ManuallyRouted="false" />
-        <AssociationConnector Association="MainDBModel.FK_to_regist" ManuallyRouted="false" />
         <AssociationConnector Association="MainDBModel.FK_to_voltmeters" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MainDBModel.sysdiagram" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,14 +13,13 @@ namespace ElectricData.BL
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class circuit
+public partial class sp_helpdiagramdefinition1_Result
 {
 
-    public int id { get; set; }
+    public Nullable<int> version { get; set; }
 
-    public string c_name { get; set; }
+    public byte[] definition { get; set; }
 
 }
 

@@ -42,8 +42,6 @@ namespace ElectricData {
         
         private krmDataTable tablekrm;
         
-        private ordersDataTable tableorders;
-        
         private registDataTable tableregist;
         
         private voltmetersDataTable tablevoltmeters;
@@ -52,13 +50,9 @@ namespace ElectricData {
         
         private SelectPCAMDataTable tableSelectPCAM;
         
-        private global::System.Data.DataRelation relationFK_to_regist;
-        
         private global::System.Data.DataRelation relationFK_to_ammeters;
         
         private global::System.Data.DataRelation relationFK_to_bloks;
-        
-        private global::System.Data.DataRelation relationFK_to_circuits;
         
         private global::System.Data.DataRelation relationFK_to_converters_i;
         
@@ -128,9 +122,6 @@ namespace ElectricData {
                 }
                 if ((ds.Tables["krm"] != null)) {
                     base.Tables.Add(new krmDataTable(ds.Tables["krm"]));
-                }
-                if ((ds.Tables["orders"] != null)) {
-                    base.Tables.Add(new ordersDataTable(ds.Tables["orders"]));
                 }
                 if ((ds.Tables["regist"] != null)) {
                     base.Tables.Add(new registDataTable(ds.Tables["regist"]));
@@ -249,16 +240,6 @@ namespace ElectricData {
         public krmDataTable krm {
             get {
                 return this.tablekrm;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ordersDataTable orders {
-            get {
-                return this.tableorders;
             }
         }
         
@@ -396,9 +377,6 @@ namespace ElectricData {
                 if ((ds.Tables["krm"] != null)) {
                     base.Tables.Add(new krmDataTable(ds.Tables["krm"]));
                 }
-                if ((ds.Tables["orders"] != null)) {
-                    base.Tables.Add(new ordersDataTable(ds.Tables["orders"]));
-                }
                 if ((ds.Tables["regist"] != null)) {
                     base.Tables.Add(new registDataTable(ds.Tables["regist"]));
                 }
@@ -498,12 +476,6 @@ namespace ElectricData {
                     this.tablekrm.InitVars();
                 }
             }
-            this.tableorders = ((ordersDataTable)(base.Tables["orders"]));
-            if ((initTable == true)) {
-                if ((this.tableorders != null)) {
-                    this.tableorders.InitVars();
-                }
-            }
             this.tableregist = ((registDataTable)(base.Tables["regist"]));
             if ((initTable == true)) {
                 if ((this.tableregist != null)) {
@@ -528,10 +500,8 @@ namespace ElectricData {
                     this.tableSelectPCAM.InitVars();
                 }
             }
-            this.relationFK_to_regist = this.Relations["FK_to_regist"];
             this.relationFK_to_ammeters = this.Relations["FK_to_ammeters"];
             this.relationFK_to_bloks = this.Relations["FK_to_bloks"];
-            this.relationFK_to_circuits = this.Relations["FK_to_circuits"];
             this.relationFK_to_converters_i = this.Relations["FK_to_converters_i"];
             this.relationFK_to_converters_u = this.Relations["FK_to_converters_u"];
             this.relationFK_to_counters = this.Relations["FK_to_counters"];
@@ -567,8 +537,6 @@ namespace ElectricData {
             base.Tables.Add(this.tableinputs);
             this.tablekrm = new krmDataTable();
             base.Tables.Add(this.tablekrm);
-            this.tableorders = new ordersDataTable();
-            base.Tables.Add(this.tableorders);
             this.tableregist = new registDataTable();
             base.Tables.Add(this.tableregist);
             this.tablevoltmeters = new voltmetersDataTable();
@@ -577,10 +545,6 @@ namespace ElectricData {
             base.Tables.Add(this.tableSelectAll);
             this.tableSelectPCAM = new SelectPCAMDataTable();
             base.Tables.Add(this.tableSelectPCAM);
-            this.relationFK_to_regist = new global::System.Data.DataRelation("FK_to_regist", new global::System.Data.DataColumn[] {
-                        this.tableregist.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableorders.id_PCAMColumn}, false);
-            this.Relations.Add(this.relationFK_to_regist);
             this.relationFK_to_ammeters = new global::System.Data.DataRelation("FK_to_ammeters", new global::System.Data.DataColumn[] {
                         this.tableammeters.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableregist.id_ammetersColumn}, false);
@@ -589,10 +553,6 @@ namespace ElectricData {
                         this.tablebloks.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableregist.id_bloksColumn}, false);
             this.Relations.Add(this.relationFK_to_bloks);
-            this.relationFK_to_circuits = new global::System.Data.DataRelation("FK_to_circuits", new global::System.Data.DataColumn[] {
-                        this.tablecircuits.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableregist.id_circuitsColumn}, false);
-            this.Relations.Add(this.relationFK_to_circuits);
             this.relationFK_to_converters_i = new global::System.Data.DataRelation("FK_to_converters_i", new global::System.Data.DataColumn[] {
                         this.tableconverters_i.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableregist.id_converters_iColumn}, false);
@@ -674,12 +634,6 @@ namespace ElectricData {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializekrm() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeorders() {
             return false;
         }
         
@@ -788,9 +742,6 @@ namespace ElectricData {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void krmRowChangeEventHandler(object sender, krmRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void ordersRowChangeEventHandler(object sender, ordersRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void registRowChangeEventHandler(object sender, registRowChangeEvent e);
@@ -3309,308 +3260,11 @@ namespace ElectricData {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ordersDataTable : global::System.Data.TypedTableBase<ordersRow> {
-            
-            private global::System.Data.DataColumn columnid;
-            
-            private global::System.Data.DataColumn columnid_PCAM;
-            
-            private global::System.Data.DataColumn columnorders_name;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersDataTable() {
-                this.TableName = "orders";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ordersDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected ordersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn id_PCAMColumn {
-                get {
-                    return this.columnid_PCAM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn orders_nameColumn {
-                get {
-                    return this.columnorders_name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow this[int index] {
-                get {
-                    return ((ordersRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ordersRowChangeEventHandler ordersRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ordersRowChangeEventHandler ordersRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ordersRowChangeEventHandler ordersRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ordersRowChangeEventHandler ordersRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddordersRow(ordersRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow AddordersRow(registRow parentregistRowByFK_to_regist, int orders_name) {
-                ordersRow rowordersRow = ((ordersRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null,
-                        orders_name};
-                if ((parentregistRowByFK_to_regist != null)) {
-                    columnValuesArray[1] = parentregistRowByFK_to_regist[0];
-                }
-                rowordersRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowordersRow);
-                return rowordersRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow FindByid(int id) {
-                return ((ordersRow)(this.Rows.Find(new object[] {
-                            id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ordersDataTable cln = ((ordersDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ordersDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnid = base.Columns["id"];
-                this.columnid_PCAM = base.Columns["id_PCAM"];
-                this.columnorders_name = base.Columns["orders_name"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
-                this.columnid_PCAM = new global::System.Data.DataColumn("id_PCAM", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_PCAM);
-                this.columnorders_name = new global::System.Data.DataColumn("orders_name", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnorders_name);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
-                this.columnid_PCAM.AllowDBNull = false;
-                this.columnorders_name.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow NewordersRow() {
-                return ((ordersRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ordersRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ordersRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ordersRowChanged != null)) {
-                    this.ordersRowChanged(this, new ordersRowChangeEvent(((ordersRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ordersRowChanging != null)) {
-                    this.ordersRowChanging(this, new ordersRowChangeEvent(((ordersRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ordersRowDeleted != null)) {
-                    this.ordersRowDeleted(this, new ordersRowChangeEvent(((ordersRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ordersRowDeleting != null)) {
-                    this.ordersRowDeleting(this, new ordersRowChangeEvent(((ordersRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveordersRow(ordersRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                MainDBDataSet ds = new MainDBDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ordersDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class registDataTable : global::System.Data.TypedTableBase<registRow> {
             
             private global::System.Data.DataColumn columnid;
             
             private global::System.Data.DataColumn columnPCAM;
-            
-            private global::System.Data.DataColumn columnid_circuits;
             
             private global::System.Data.DataColumn columnid_counters;
             
@@ -3633,6 +3287,8 @@ namespace ElectricData {
             private global::System.Data.DataColumn columnlink;
             
             private global::System.Data.DataColumn columnnote;
+            
+            private global::System.Data.DataColumn columnnumber_of_order;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3680,14 +3336,6 @@ namespace ElectricData {
             public global::System.Data.DataColumn PCAMColumn {
                 get {
                     return this.columnPCAM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn id_circuitsColumn {
-                get {
-                    return this.columnid_circuits;
                 }
             }
             
@@ -3781,6 +3429,14 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn number_of_orderColumn {
+                get {
+                    return this.columnnumber_of_order;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3816,7 +3472,7 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public registRow AddregistRow(string PCAM, circuitsRow parentcircuitsRowByFK_to_circuits, countersRow parentcountersRowByFK_to_counters, inputsRow parentinputsRowByFK_to_inputs, ammetersRow parentammetersRowByFK_to_ammeters, bloksRow parentbloksRowByFK_to_bloks, converters_iRow parentconverters_iRowByFK_to_converters_i, converters_uRow parentconverters_uRowByFK_to_converters_u, krmRow parentkrmRowByFK_to_krm, voltmetersRow parentvoltmetersRowByFK_to_voltmeters, countryRow parentcountryRowByFK_to_country, string link, string note) {
+            public registRow AddregistRow(string PCAM, countersRow parentcountersRowByFK_to_counters, inputsRow parentinputsRowByFK_to_inputs, ammetersRow parentammetersRowByFK_to_ammeters, bloksRow parentbloksRowByFK_to_bloks, converters_iRow parentconverters_iRowByFK_to_converters_i, converters_uRow parentconverters_uRowByFK_to_converters_u, krmRow parentkrmRowByFK_to_krm, voltmetersRow parentvoltmetersRowByFK_to_voltmeters, countryRow parentcountryRowByFK_to_country, string link, string note, string number_of_order) {
                 registRow rowregistRow = ((registRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3830,38 +3486,35 @@ namespace ElectricData {
                         null,
                         null,
                         null,
-                        null,
                         link,
-                        note};
-                if ((parentcircuitsRowByFK_to_circuits != null)) {
-                    columnValuesArray[2] = parentcircuitsRowByFK_to_circuits[0];
-                }
+                        note,
+                        number_of_order};
                 if ((parentcountersRowByFK_to_counters != null)) {
-                    columnValuesArray[3] = parentcountersRowByFK_to_counters[0];
+                    columnValuesArray[2] = parentcountersRowByFK_to_counters[0];
                 }
                 if ((parentinputsRowByFK_to_inputs != null)) {
-                    columnValuesArray[4] = parentinputsRowByFK_to_inputs[0];
+                    columnValuesArray[3] = parentinputsRowByFK_to_inputs[0];
                 }
                 if ((parentammetersRowByFK_to_ammeters != null)) {
-                    columnValuesArray[5] = parentammetersRowByFK_to_ammeters[0];
+                    columnValuesArray[4] = parentammetersRowByFK_to_ammeters[0];
                 }
                 if ((parentbloksRowByFK_to_bloks != null)) {
-                    columnValuesArray[6] = parentbloksRowByFK_to_bloks[0];
+                    columnValuesArray[5] = parentbloksRowByFK_to_bloks[0];
                 }
                 if ((parentconverters_iRowByFK_to_converters_i != null)) {
-                    columnValuesArray[7] = parentconverters_iRowByFK_to_converters_i[0];
+                    columnValuesArray[6] = parentconverters_iRowByFK_to_converters_i[0];
                 }
                 if ((parentconverters_uRowByFK_to_converters_u != null)) {
-                    columnValuesArray[8] = parentconverters_uRowByFK_to_converters_u[0];
+                    columnValuesArray[7] = parentconverters_uRowByFK_to_converters_u[0];
                 }
                 if ((parentkrmRowByFK_to_krm != null)) {
-                    columnValuesArray[9] = parentkrmRowByFK_to_krm[0];
+                    columnValuesArray[8] = parentkrmRowByFK_to_krm[0];
                 }
                 if ((parentvoltmetersRowByFK_to_voltmeters != null)) {
-                    columnValuesArray[10] = parentvoltmetersRowByFK_to_voltmeters[0];
+                    columnValuesArray[9] = parentvoltmetersRowByFK_to_voltmeters[0];
                 }
                 if ((parentcountryRowByFK_to_country != null)) {
-                    columnValuesArray[11] = parentcountryRowByFK_to_country[0];
+                    columnValuesArray[10] = parentcountryRowByFK_to_country[0];
                 }
                 rowregistRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowregistRow);
@@ -3894,7 +3547,6 @@ namespace ElectricData {
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
                 this.columnPCAM = base.Columns["PCAM"];
-                this.columnid_circuits = base.Columns["id_circuits"];
                 this.columnid_counters = base.Columns["id_counters"];
                 this.columnid_inputs = base.Columns["id_inputs"];
                 this.columnid_ammeters = base.Columns["id_ammeters"];
@@ -3906,6 +3558,7 @@ namespace ElectricData {
                 this.columnid_country = base.Columns["id_country"];
                 this.columnlink = base.Columns["link"];
                 this.columnnote = base.Columns["note"];
+                this.columnnumber_of_order = base.Columns["number_of_order"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3915,8 +3568,6 @@ namespace ElectricData {
                 base.Columns.Add(this.columnid);
                 this.columnPCAM = new global::System.Data.DataColumn("PCAM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPCAM);
-                this.columnid_circuits = new global::System.Data.DataColumn("id_circuits", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_circuits);
                 this.columnid_counters = new global::System.Data.DataColumn("id_counters", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_counters);
                 this.columnid_inputs = new global::System.Data.DataColumn("id_inputs", typeof(int), null, global::System.Data.MappingType.Element);
@@ -3939,6 +3590,8 @@ namespace ElectricData {
                 base.Columns.Add(this.columnlink);
                 this.columnnote = new global::System.Data.DataColumn("note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnote);
+                this.columnnumber_of_order = new global::System.Data.DataColumn("number_of_order", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber_of_order);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -3949,7 +3602,6 @@ namespace ElectricData {
                 this.columnid.Unique = true;
                 this.columnPCAM.AllowDBNull = false;
                 this.columnPCAM.MaxLength = 50;
-                this.columnid_circuits.AllowDBNull = false;
                 this.columnid_counters.AllowDBNull = false;
                 this.columnid_inputs.AllowDBNull = false;
                 this.columnid_ammeters.AllowDBNull = false;
@@ -3961,6 +3613,7 @@ namespace ElectricData {
                 this.columnid_country.AllowDBNull = false;
                 this.columnlink.MaxLength = 2147483647;
                 this.columnnote.MaxLength = 2147483647;
+                this.columnnumber_of_order.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4374,8 +4027,6 @@ namespace ElectricData {
             
             private global::System.Data.DataColumn columnPCAM;
             
-            private global::System.Data.DataColumn columnc_name;
-            
             private global::System.Data.DataColumn columncounter_name;
             
             private global::System.Data.DataColumn columninputs_count;
@@ -4397,6 +4048,8 @@ namespace ElectricData {
             private global::System.Data.DataColumn columnlink;
             
             private global::System.Data.DataColumn columnnote;
+            
+            private global::System.Data.DataColumn columnnumber_of_order;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -4436,14 +4089,6 @@ namespace ElectricData {
             public global::System.Data.DataColumn PCAMColumn {
                 get {
                     return this.columnPCAM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn c_nameColumn {
-                get {
-                    return this.columnc_name;
                 }
             }
             
@@ -4537,6 +4182,14 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn number_of_orderColumn {
+                get {
+                    return this.columnnumber_of_order;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4572,11 +4225,10 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SelectAllRow AddSelectAllRow(string PCAM, string c_name, string counter_name, int inputs_count, string bloks_name, int ammeters_count, string conv_i, string conv_u, string country_name, string krm_ind, string volt_ind, string link, string note) {
+            public SelectAllRow AddSelectAllRow(string PCAM, string counter_name, int inputs_count, string bloks_name, int ammeters_count, string conv_i, string conv_u, string country_name, string krm_ind, string volt_ind, string link, string note, string number_of_order) {
                 SelectAllRow rowSelectAllRow = ((SelectAllRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PCAM,
-                        c_name,
                         counter_name,
                         inputs_count,
                         bloks_name,
@@ -4587,7 +4239,8 @@ namespace ElectricData {
                         krm_ind,
                         volt_ind,
                         link,
-                        note};
+                        note,
+                        number_of_order};
                 rowSelectAllRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSelectAllRow);
                 return rowSelectAllRow;
@@ -4611,7 +4264,6 @@ namespace ElectricData {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnPCAM = base.Columns["PCAM"];
-                this.columnc_name = base.Columns["c_name"];
                 this.columncounter_name = base.Columns["counter_name"];
                 this.columninputs_count = base.Columns["inputs_count"];
                 this.columnbloks_name = base.Columns["bloks_name"];
@@ -4623,6 +4275,7 @@ namespace ElectricData {
                 this.columnvolt_ind = base.Columns["volt_ind"];
                 this.columnlink = base.Columns["link"];
                 this.columnnote = base.Columns["note"];
+                this.columnnumber_of_order = base.Columns["number_of_order"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4630,8 +4283,6 @@ namespace ElectricData {
             private void InitClass() {
                 this.columnPCAM = new global::System.Data.DataColumn("PCAM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPCAM);
-                this.columnc_name = new global::System.Data.DataColumn("c_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnc_name);
                 this.columncounter_name = new global::System.Data.DataColumn("counter_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncounter_name);
                 this.columninputs_count = new global::System.Data.DataColumn("inputs_count", typeof(int), null, global::System.Data.MappingType.Element);
@@ -4654,10 +4305,10 @@ namespace ElectricData {
                 base.Columns.Add(this.columnlink);
                 this.columnnote = new global::System.Data.DataColumn("note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnote);
+                this.columnnumber_of_order = new global::System.Data.DataColumn("number_of_order", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber_of_order);
                 this.columnPCAM.AllowDBNull = false;
                 this.columnPCAM.MaxLength = 50;
-                this.columnc_name.AllowDBNull = false;
-                this.columnc_name.MaxLength = 50;
                 this.columncounter_name.AllowDBNull = false;
                 this.columncounter_name.MaxLength = 50;
                 this.columninputs_count.AllowDBNull = false;
@@ -4676,6 +4327,7 @@ namespace ElectricData {
                 this.columnvolt_ind.MaxLength = 25;
                 this.columnlink.MaxLength = 2147483647;
                 this.columnnote.MaxLength = 2147483647;
+                this.columnnumber_of_order.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4811,7 +4463,7 @@ namespace ElectricData {
             
             private global::System.Data.DataColumn columnPCAM;
             
-            private global::System.Data.DataColumn columnorders_name;
+            private global::System.Data.DataColumn columnnumber_of_order;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -4856,9 +4508,9 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn orders_nameColumn {
+            public global::System.Data.DataColumn number_of_orderColumn {
                 get {
-                    return this.columnorders_name;
+                    return this.columnnumber_of_order;
                 }
             }
             
@@ -4899,11 +4551,11 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SelectPCAMRow AddSelectPCAMRow(string PCAM, int orders_name) {
+            public SelectPCAMRow AddSelectPCAMRow(string PCAM, string number_of_order) {
                 SelectPCAMRow rowSelectPCAMRow = ((SelectPCAMRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PCAM,
-                        orders_name};
+                        number_of_order};
                 rowSelectPCAMRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSelectPCAMRow);
                 return rowSelectPCAMRow;
@@ -4927,7 +4579,7 @@ namespace ElectricData {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnPCAM = base.Columns["PCAM"];
-                this.columnorders_name = base.Columns["orders_name"];
+                this.columnnumber_of_order = base.Columns["number_of_order"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4935,11 +4587,11 @@ namespace ElectricData {
             private void InitClass() {
                 this.columnPCAM = new global::System.Data.DataColumn("PCAM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPCAM);
-                this.columnorders_name = new global::System.Data.DataColumn("orders_name", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnorders_name);
+                this.columnnumber_of_order = new global::System.Data.DataColumn("number_of_order", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber_of_order);
                 this.columnPCAM.AllowDBNull = false;
                 this.columnPCAM.MaxLength = 50;
-                this.columnorders_name.AllowDBNull = false;
+                this.columnnumber_of_order.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5195,17 +4847,6 @@ namespace ElectricData {
                 }
                 set {
                     this[this.tablecircuits.c_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public registRow[] GetregistRows() {
-                if ((this.Table.ChildRelations["FK_to_circuits"] == null)) {
-                    return new registRow[0];
-                }
-                else {
-                    return ((registRow[])(base.GetChildRows(this.Table.ChildRelations["FK_to_circuits"])));
                 }
             }
         }
@@ -5501,65 +5142,6 @@ namespace ElectricData {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ordersRow : global::System.Data.DataRow {
-            
-            private ordersDataTable tableorders;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ordersRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableorders = ((ordersDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tableorders.idColumn]));
-                }
-                set {
-                    this[this.tableorders.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int id_PCAM {
-                get {
-                    return ((int)(this[this.tableorders.id_PCAMColumn]));
-                }
-                set {
-                    this[this.tableorders.id_PCAMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int orders_name {
-                get {
-                    return ((int)(this[this.tableorders.orders_nameColumn]));
-                }
-                set {
-                    this[this.tableorders.orders_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public registRow registRow {
-                get {
-                    return ((registRow)(this.GetParentRow(this.Table.ParentRelations["FK_to_regist"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_to_regist"]);
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class registRow : global::System.Data.DataRow {
             
             private registDataTable tableregist;
@@ -5590,17 +5172,6 @@ namespace ElectricData {
                 }
                 set {
                     this[this.tableregist.PCAMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int id_circuits {
-                get {
-                    return ((int)(this[this.tableregist.id_circuitsColumn]));
-                }
-                set {
-                    this[this.tableregist.id_circuitsColumn] = value;
                 }
             }
             
@@ -5737,6 +5308,22 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string number_of_order {
+                get {
+                    try {
+                        return ((string)(this[this.tableregist.number_of_orderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'number_of_order\' в таблице \'regist\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableregist.number_of_orderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ammetersRow ammetersRow {
                 get {
                     return ((ammetersRow)(this.GetParentRow(this.Table.ParentRelations["FK_to_ammeters"])));
@@ -5754,17 +5341,6 @@ namespace ElectricData {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_to_bloks"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public circuitsRow circuitsRow {
-                get {
-                    return ((circuitsRow)(this.GetParentRow(this.Table.ParentRelations["FK_to_circuits"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_to_circuits"]);
                 }
             }
             
@@ -5871,13 +5447,14 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow[] GetordersRows() {
-                if ((this.Table.ChildRelations["FK_to_regist"] == null)) {
-                    return new ordersRow[0];
-                }
-                else {
-                    return ((ordersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_to_regist"])));
-                }
+            public bool Isnumber_of_orderNull() {
+                return this.IsNull(this.tableregist.number_of_orderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setnumber_of_orderNull() {
+                this[this.tableregist.number_of_orderColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5951,17 +5528,6 @@ namespace ElectricData {
                 }
                 set {
                     this[this.tableSelectAll.PCAMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string c_name {
-                get {
-                    return ((string)(this[this.tableSelectAll.c_nameColumn]));
-                }
-                set {
-                    this[this.tableSelectAll.c_nameColumn] = value;
                 }
             }
             
@@ -6098,6 +5664,22 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string number_of_order {
+                get {
+                    try {
+                        return ((string)(this[this.tableSelectAll.number_of_orderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'number_of_order\' в таблице \'SelectAll\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSelectAll.number_of_orderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IslinkNull() {
                 return this.IsNull(this.tableSelectAll.linkColumn);
             }
@@ -6118,6 +5700,18 @@ namespace ElectricData {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnoteNull() {
                 this[this.tableSelectAll.noteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isnumber_of_orderNull() {
+                return this.IsNull(this.tableSelectAll.number_of_orderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setnumber_of_orderNull() {
+                this[this.tableSelectAll.number_of_orderColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6148,13 +5742,30 @@ namespace ElectricData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int orders_name {
+            public string number_of_order {
                 get {
-                    return ((int)(this[this.tableSelectPCAM.orders_nameColumn]));
+                    try {
+                        return ((string)(this[this.tableSelectPCAM.number_of_orderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'number_of_order\' в таблице \'SelectPCAM\' равно DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableSelectPCAM.orders_nameColumn] = value;
+                    this[this.tableSelectPCAM.number_of_orderColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isnumber_of_orderNull() {
+                return this.IsNull(this.tableSelectPCAM.number_of_orderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setnumber_of_orderNull() {
+                this[this.tableSelectPCAM.number_of_orderColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6450,40 +6061,6 @@ namespace ElectricData {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public krmRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class ordersRowChangeEvent : global::System.EventArgs {
-            
-            private ordersRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRowChangeEvent(ordersRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ordersRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9468,315 +9045,6 @@ namespace ElectricData.MainDBDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ordersTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public ordersTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "orders";
-            tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("id_PCAM", "id_PCAM");
-            tableMapping.ColumnMappings.Add("orders_name", "orders_name");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[orders] WHERE (([id] = @Original_id) AND ([id_PCAM] = @Origina" +
-                "l_id_PCAM) AND ([orders_name] = @Original_orders_name))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_PCAM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_PCAM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_orders_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orders_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[orders] ([id_PCAM], [orders_name]) VALUES (@id_PCAM, @orders_n" +
-                "ame);\r\nSELECT id, id_PCAM, orders_name FROM orders WHERE (id = SCOPE_IDENTITY())" +
-                "";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_PCAM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_PCAM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@orders_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orders_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[orders] SET [id_PCAM] = @id_PCAM, [orders_name] = @orders_name WHER" +
-                "E (([id] = @Original_id) AND ([id_PCAM] = @Original_id_PCAM) AND ([orders_name] " +
-                "= @Original_orders_name));\r\nSELECT id, id_PCAM, orders_name FROM orders WHERE (i" +
-                "d = @id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_PCAM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_PCAM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@orders_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orders_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_PCAM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_PCAM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_orders_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orders_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ElectricData.Properties.Settings.Default.DbConnect;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, id_PCAM, orders_name FROM dbo.orders";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(MainDBDataSet.ordersDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual MainDBDataSet.ordersDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            MainDBDataSet.ordersDataTable dataTable = new MainDBDataSet.ordersDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(MainDBDataSet.ordersDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(MainDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "orders");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, int Original_id_PCAM, int Original_orders_name) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_id_PCAM));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_orders_name));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int id_PCAM, int orders_name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_PCAM));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(orders_name));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int id_PCAM, int orders_name, int Original_id, int Original_id_PCAM, int Original_orders_name, int id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_PCAM));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(orders_name));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_id));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_id_PCAM));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_orders_name));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int id_PCAM, int orders_name, int Original_id, int Original_id_PCAM, int Original_orders_name) {
-            return this.Update(id_PCAM, orders_name, Original_id, Original_id_PCAM, Original_orders_name, Original_id);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class registTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -9891,7 +9159,6 @@ namespace ElectricData.MainDBDataSetTableAdapters {
             tableMapping.DataSetTable = "regist";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("PCAM", "PCAM");
-            tableMapping.ColumnMappings.Add("id_circuits", "id_circuits");
             tableMapping.ColumnMappings.Add("id_counters", "id_counters");
             tableMapping.ColumnMappings.Add("id_inputs", "id_inputs");
             tableMapping.ColumnMappings.Add("id_ammeters", "id_ammeters");
@@ -9903,14 +9170,14 @@ namespace ElectricData.MainDBDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("id_country", "id_country");
             tableMapping.ColumnMappings.Add("link", "link");
             tableMapping.ColumnMappings.Add("note", "note");
+            tableMapping.ColumnMappings.Add("number_of_order", "number_of_order");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[regist] WHERE (([id] = @Original_id) AND ([PCAM] = @Original_PCAM) AND ([id_circuits] = @Original_id_circuits) AND ([id_counters] = @Original_id_counters) AND ([id_inputs] = @Original_id_inputs) AND ([id_ammeters] = @Original_id_ammeters) AND ([id_bloks] = @Original_id_bloks) AND ([id_converters_i] = @Original_id_converters_i) AND ([id_converters_u] = @Original_id_converters_u) AND ([id_krm] = @Original_id_krm) AND ([id_voltmeters] = @Original_id_voltmeters) AND ([id_country] = @Original_id_country))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [regist] WHERE (([id] = @Original_id) AND ([PCAM] = @Original_PCAM) AND ([id_counters] = @Original_id_counters) AND ([id_inputs] = @Original_id_inputs) AND ([id_ammeters] = @Original_id_ammeters) AND ([id_bloks] = @Original_id_bloks) AND ([id_converters_i] = @Original_id_converters_i) AND ([id_converters_u] = @Original_id_converters_u) AND ([id_krm] = @Original_id_krm) AND ([id_voltmeters] = @Original_id_voltmeters) AND ([id_country] = @Original_id_country))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PCAM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCAM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_circuits", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_circuits", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_counters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_counters", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_inputs", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_inputs", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_ammeters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_ammeters", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9922,11 +9189,10 @@ namespace ElectricData.MainDBDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_country", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_country", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[regist] ([PCAM], [id_circuits], [id_counters], [id_inputs], [id_ammeters], [id_bloks], [id_converters_i], [id_converters_u], [id_krm], [id_voltmeters], [id_country], [link], [note]) VALUES (@PCAM, @id_circuits, @id_counters, @id_inputs, @id_ammeters, @id_bloks, @id_converters_i, @id_converters_u, @id_krm, @id_voltmeters, @id_country, @link, @note);
-SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note FROM regist WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [regist] ([PCAM], [id_counters], [id_inputs], [id_ammeters], [id_bloks], [id_converters_i], [id_converters_u], [id_krm], [id_voltmeters], [id_country], [link], [note], [number_of_order]) VALUES (@PCAM, @id_counters, @id_inputs, @id_ammeters, @id_bloks, @id_converters_i, @id_converters_u, @id_krm, @id_voltmeters, @id_country, @link, @note, @number_of_order);
+SELECT id, PCAM, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note, number_of_order FROM regist WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCAM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCAM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_circuits", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_circuits", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_counters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_counters", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_inputs", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_inputs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_ammeters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_ammeters", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9938,13 +9204,13 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_country", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@link", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "link", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@note", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "note", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number_of_order", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number_of_order", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[regist] SET [PCAM] = @PCAM, [id_circuits] = @id_circuits, [id_counters] = @id_counters, [id_inputs] = @id_inputs, [id_ammeters] = @id_ammeters, [id_bloks] = @id_bloks, [id_converters_i] = @id_converters_i, [id_converters_u] = @id_converters_u, [id_krm] = @id_krm, [id_voltmeters] = @id_voltmeters, [id_country] = @id_country, [link] = @link, [note] = @note WHERE (([id] = @Original_id) AND ([PCAM] = @Original_PCAM) AND ([id_circuits] = @Original_id_circuits) AND ([id_counters] = @Original_id_counters) AND ([id_inputs] = @Original_id_inputs) AND ([id_ammeters] = @Original_id_ammeters) AND ([id_bloks] = @Original_id_bloks) AND ([id_converters_i] = @Original_id_converters_i) AND ([id_converters_u] = @Original_id_converters_u) AND ([id_krm] = @Original_id_krm) AND ([id_voltmeters] = @Original_id_voltmeters) AND ([id_country] = @Original_id_country));
-SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note FROM regist WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [regist] SET [PCAM] = @PCAM, [id_counters] = @id_counters, [id_inputs] = @id_inputs, [id_ammeters] = @id_ammeters, [id_bloks] = @id_bloks, [id_converters_i] = @id_converters_i, [id_converters_u] = @id_converters_u, [id_krm] = @id_krm, [id_voltmeters] = @id_voltmeters, [id_country] = @id_country, [link] = @link, [note] = @note, [number_of_order] = @number_of_order WHERE (([id] = @Original_id) AND ([PCAM] = @Original_PCAM) AND ([id_counters] = @Original_id_counters) AND ([id_inputs] = @Original_id_inputs) AND ([id_ammeters] = @Original_id_ammeters) AND ([id_bloks] = @Original_id_bloks) AND ([id_converters_i] = @Original_id_converters_i) AND ([id_converters_u] = @Original_id_converters_u) AND ([id_krm] = @Original_id_krm) AND ([id_voltmeters] = @Original_id_voltmeters) AND ([id_country] = @Original_id_country));
+SELECT id, PCAM, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note, number_of_order FROM regist WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCAM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCAM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_circuits", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_circuits", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_counters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_counters", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_inputs", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_inputs", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_ammeters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_ammeters", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9956,9 +9222,9 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_country", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@link", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "link", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@note", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "note", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number_of_order", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number_of_order", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PCAM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCAM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_circuits", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_circuits", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_counters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_counters", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_inputs", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_inputs", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_ammeters", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_ammeters", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9984,9 +9250,9 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_c" +
-                "onverters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note FROM" +
-                " dbo.regist";
+            this._commandCollection[0].CommandText = "SELECT id, PCAM, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, " +
+                "id_converters_u, id_krm, id_voltmeters, id_country, link, note, number_of_order " +
+                "FROM regist";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10047,7 +9313,7 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_PCAM, int Original_id_circuits, int Original_id_counters, int Original_id_inputs, int Original_id_ammeters, int Original_id_bloks, int Original_id_converters_i, int Original_id_converters_u, int Original_id_krm, int Original_id_voltmeters, int Original_id_country) {
+        public virtual int Delete(int Original_id, string Original_PCAM, int Original_id_counters, int Original_id_inputs, int Original_id_ammeters, int Original_id_bloks, int Original_id_converters_i, int Original_id_converters_u, int Original_id_krm, int Original_id_voltmeters, int Original_id_country) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_PCAM == null)) {
                 throw new global::System.ArgumentNullException("Original_PCAM");
@@ -10055,16 +9321,15 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_PCAM));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_circuits));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_id_counters));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_inputs));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_ammeters));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_id_bloks));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_id_converters_i));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_id_converters_u));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_id_krm));
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_id_voltmeters));
-            this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_id_country));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_id_counters));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_id_inputs));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_id_ammeters));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_bloks));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_id_converters_i));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_id_converters_u));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_id_krm));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_id_voltmeters));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_id_country));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10085,34 +9350,39 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string PCAM, int id_circuits, int id_counters, int id_inputs, int id_ammeters, int id_bloks, int id_converters_i, int id_converters_u, int id_krm, int id_voltmeters, int id_country, string link, string note) {
+        public virtual int Insert(string PCAM, int id_counters, int id_inputs, int id_ammeters, int id_bloks, int id_converters_i, int id_converters_u, int id_krm, int id_voltmeters, int id_country, string link, string note, string number_of_order) {
             if ((PCAM == null)) {
                 throw new global::System.ArgumentNullException("PCAM");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(PCAM));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_circuits));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(id_counters));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(id_inputs));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(id_ammeters));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(id_bloks));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(id_converters_i));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(id_converters_u));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(id_krm));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(id_voltmeters));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((int)(id_country));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(id_counters));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(id_inputs));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(id_ammeters));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(id_bloks));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(id_converters_i));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(id_converters_u));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(id_krm));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(id_voltmeters));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(id_country));
             if ((link == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(link));
+            }
+            if ((note == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(link));
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(note));
             }
-            if ((note == null)) {
+            if ((number_of_order == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(note));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(number_of_order));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10136,7 +9406,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string PCAM, 
-                    int id_circuits, 
                     int id_counters, 
                     int id_inputs, 
                     int id_ammeters, 
@@ -10148,9 +9417,9 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                     int id_country, 
                     string link, 
                     string note, 
+                    string number_of_order, 
                     int Original_id, 
                     string Original_PCAM, 
-                    int Original_id_circuits, 
                     int Original_id_counters, 
                     int Original_id_inputs, 
                     int Original_id_ammeters, 
@@ -10167,27 +9436,32 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(PCAM));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_circuits));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(id_counters));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(id_inputs));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(id_ammeters));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(id_bloks));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(id_converters_i));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(id_converters_u));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(id_krm));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(id_voltmeters));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(id_country));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(id_counters));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(id_inputs));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(id_ammeters));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(id_bloks));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(id_converters_i));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(id_converters_u));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(id_krm));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(id_voltmeters));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(id_country));
             if ((link == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(link));
+            }
+            if ((note == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(link));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(note));
             }
-            if ((note == null)) {
+            if ((number_of_order == null)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(note));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(number_of_order));
             }
             this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_id));
             if ((Original_PCAM == null)) {
@@ -10196,17 +9470,16 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_PCAM));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_id_circuits));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_id_counters));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_id_inputs));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_id_ammeters));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_id_bloks));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_id_converters_i));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_id_converters_u));
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_id_krm));
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_id_voltmeters));
-            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_id_country));
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_id_counters));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_id_inputs));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_id_ammeters));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_id_bloks));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_id_converters_i));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_id_converters_u));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_id_krm));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_id_voltmeters));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_id_country));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10229,7 +9502,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string PCAM, 
-                    int id_circuits, 
                     int id_counters, 
                     int id_inputs, 
                     int id_ammeters, 
@@ -10241,9 +9513,9 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                     int id_country, 
                     string link, 
                     string note, 
+                    string number_of_order, 
                     int Original_id, 
                     string Original_PCAM, 
-                    int Original_id_circuits, 
                     int Original_id_counters, 
                     int Original_id_inputs, 
                     int Original_id_ammeters, 
@@ -10253,7 +9525,7 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                     int Original_id_krm, 
                     int Original_id_voltmeters, 
                     int Original_id_country) {
-            return this.Update(PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note, Original_id, Original_PCAM, Original_id_circuits, Original_id_counters, Original_id_inputs, Original_id_ammeters, Original_id_bloks, Original_id_converters_i, Original_id_converters_u, Original_id_krm, Original_id_voltmeters, Original_id_country, Original_id);
+            return this.Update(PCAM, id_counters, id_inputs, id_ammeters, id_bloks, id_converters_i, id_converters_u, id_krm, id_voltmeters, id_country, link, note, number_of_order, Original_id, Original_PCAM, Original_id_counters, Original_id_inputs, Original_id_ammeters, Original_id_bloks, Original_id_converters_i, Original_id_converters_u, Original_id_krm, Original_id_voltmeters, Original_id_country, Original_id);
         }
     }
     
@@ -10697,7 +9969,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "SelectAll";
             tableMapping.ColumnMappings.Add("PCAM", "PCAM");
-            tableMapping.ColumnMappings.Add("c_name", "c_name");
             tableMapping.ColumnMappings.Add("counter_name", "counter_name");
             tableMapping.ColumnMappings.Add("inputs_count", "inputs_count");
             tableMapping.ColumnMappings.Add("bloks_name", "bloks_name");
@@ -10709,6 +9980,7 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             tableMapping.ColumnMappings.Add("volt_ind", "volt_ind");
             tableMapping.ColumnMappings.Add("link", "link");
             tableMapping.ColumnMappings.Add("note", "note");
+            tableMapping.ColumnMappings.Add("number_of_order", "number_of_order");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10877,7 +10149,7 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "SelectPCAM";
             tableMapping.ColumnMappings.Add("PCAM", "PCAM");
-            tableMapping.ColumnMappings.Add("orders_name", "orders_name");
+            tableMapping.ColumnMappings.Add("number_of_order", "number_of_order");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10953,8 +10225,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         private inputsTableAdapter _inputsTableAdapter;
         
         private krmTableAdapter _krmTableAdapter;
-        
-        private ordersTableAdapter _ordersTableAdapter;
         
         private registTableAdapter _registTableAdapter;
         
@@ -11106,20 +10376,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ordersTableAdapter ordersTableAdapter {
-            get {
-                return this._ordersTableAdapter;
-            }
-            set {
-                this._ordersTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public registTableAdapter registTableAdapter {
             get {
                 return this._registTableAdapter;
@@ -11198,10 +10454,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                             && (this._krmTableAdapter.Connection != null))) {
                     return this._krmTableAdapter.Connection;
                 }
-                if (((this._ordersTableAdapter != null) 
-                            && (this._ordersTableAdapter.Connection != null))) {
-                    return this._ordersTableAdapter.Connection;
-                }
                 if (((this._registTableAdapter != null) 
                             && (this._registTableAdapter.Connection != null))) {
                     return this._registTableAdapter.Connection;
@@ -11250,9 +10502,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                 if ((this._krmTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._ordersTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._registTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -11285,15 +10534,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._bloksTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._circuitsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._circuitsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11360,21 +10600,21 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._circuitsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._circuitsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._registTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.regist.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._registTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._ordersTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.orders.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._ordersTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11401,14 +10641,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._bloksTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._circuitsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._circuitsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11468,19 +10700,19 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._circuitsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._circuitsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._registTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.regist.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._registTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._ordersTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.orders.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._ordersTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11494,19 +10726,19 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(MainDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._ordersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.orders.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._ordersTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._registTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.regist.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._registTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._circuitsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._circuitsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11563,14 +10795,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._converters_iTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._circuitsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.circuits.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._circuitsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11671,11 +10895,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
             }
             if (((this._krmTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._krmTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
-            if (((this._ordersTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._ordersTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -11802,15 +11021,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                         adaptersWithAcceptChangesDuringUpdate.Add(this._krmTableAdapter.Adapter);
                     }
                 }
-                if ((this._ordersTableAdapter != null)) {
-                    revertConnections.Add(this._ordersTableAdapter, this._ordersTableAdapter.Connection);
-                    this._ordersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._ordersTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._ordersTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._ordersTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._ordersTableAdapter.Adapter);
-                    }
-                }
                 if ((this._registTableAdapter != null)) {
                     revertConnections.Add(this._registTableAdapter, this._registTableAdapter.Connection);
                     this._registTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -11922,10 +11132,6 @@ SELECT id, PCAM, id_circuits, id_counters, id_inputs, id_ammeters, id_bloks, id_
                 if ((this._krmTableAdapter != null)) {
                     this._krmTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._krmTableAdapter]));
                     this._krmTableAdapter.Transaction = null;
-                }
-                if ((this._ordersTableAdapter != null)) {
-                    this._ordersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ordersTableAdapter]));
-                    this._ordersTableAdapter.Transaction = null;
                 }
                 if ((this._registTableAdapter != null)) {
                     this._registTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._registTableAdapter]));

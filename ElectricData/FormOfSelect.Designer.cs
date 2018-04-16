@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SelectOfSort_box = new MetroFramework.Controls.MetroComboBox();
-            this.SelectSort_button = new MetroFramework.Controls.MetroButton();
-            this.ExitSelect_button = new MetroFramework.Controls.MetroButton();
             this.bindingSource_circuits = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new ElectricData.MainDBDataSet();
+            this.SelectSort_button = new MetroFramework.Controls.MetroButton();
+            this.ExitSelect_button = new MetroFramework.Controls.MetroButton();
             this.circuitsTableAdapter = new ElectricData.MainDBDataSetTableAdapters.circuitsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_circuits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
@@ -51,6 +51,16 @@
             this.SelectOfSort_box.Name = "SelectOfSort_box";
             this.SelectOfSort_box.Size = new System.Drawing.Size(321, 29);
             this.SelectOfSort_box.TabIndex = 0;
+            // 
+            // bindingSource_circuits
+            // 
+            this.bindingSource_circuits.DataMember = "circuits";
+            this.bindingSource_circuits.DataSource = this.mainDBDataSet;
+            // 
+            // mainDBDataSet
+            // 
+            this.mainDBDataSet.DataSetName = "MainDBDataSet";
+            this.mainDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // SelectSort_button
             // 
@@ -70,11 +80,6 @@
             this.ExitSelect_button.TabIndex = 6;
             this.ExitSelect_button.Text = "Выход";
             // 
-            // bindingSource_circuits
-            // 
-            this.bindingSource_circuits.DataMember = "circuits";
-            this.bindingSource_circuits.DataSource = this.mainDBDataSet;
-            // 
             // circuitsTableAdapter
             // 
             this.circuitsTableAdapter.ClearBeforeFill = true;
@@ -91,6 +96,7 @@
             this.MinimumSize = new System.Drawing.Size(368, 198);
             this.Name = "FormOfSelect";
             this.Text = "Выберите тип схемы:";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormOfSelect_FormClosed);
             this.Load += new System.EventHandler(this.FormOfSelect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_circuits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
