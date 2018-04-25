@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.Collections.Generic;
@@ -21,19 +22,19 @@ namespace ElectricData
     public partial class FormOfSearch : MetroForm, IFormOfSearch
     {
         List<string> item_search;
-        string link, pcam_link, extra, message;
+        string link, pcam_link, extra, message, pcam_sel;
 
         public FormOfSearch()
         {
             InitializeComponent();
-            pcam_box.SelectionChangeCommitted += Pcam_box_SelectionChangeCommitted;
+            pcam_box.SelectedIndexChanged += Pcam_box_SelectedIndexChanged;
             DataEditor_button.Click += DataEditor_button_Click;
             OpenFolder_button.Click += OpenFolder_button_Click;
             ExitOfSearch_button.Click += ExitOfSearch_button_Click;
         }
 
         #region События формы Search
-        private void Pcam_box_SelectionChangeCommitted(object sender, EventArgs e)
+        private void Pcam_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             pcam_link = pcam_box.Text;
             Select_Extra?.Invoke(this, EventArgs.Empty);
@@ -104,6 +105,19 @@ namespace ElectricData
             pcam_box.SelectedIndex = -1;
 
             this.selectPCAMTableAdapter.Fill(this.mainDBDataSet.SelectPCAM);
+
+            try
+            {
+                FileStream stream = new FileStream("Note.txt", FileMode.Open);
+                StreamReader reader = new StreamReader(stream, System.Text.Encoding.GetEncoding(1251));
+                Note_textbox.Font = new System.Drawing.Font ("Arial", 8);
+                Note_textbox.Text = reader.ReadToEnd();
+                reader.Close();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SelectCircuit_button_Click(object sender, EventArgs e)
@@ -118,17 +132,27 @@ namespace ElectricData
                 volt_box.Text !="" && inputs_box.Text != "" && convertI_box.Text !="" && 
                 convertU_box.Text != "" && krm_box.Text != "" && country_box.Text != "")
             {
-                selectAllBindingSource.Filter = "[counter_name] LIKE'" + counters_box.Text + "%'";
-                SelectTableString(bloks_box, "bloks_name");
-                SelectTableInt(amper_box, "ammeters_count");
-                SelectTableString(volt_box, "volt_ind");
-                SelectTableInt(inputs_box, "inputs_count");
-                SelectTableString(convertI_box, "conv_i");
-                SelectTableString(convertU_box, "conv_u");
-                SelectTableString(krm_box, "krm_ind");
-                SelectTableString(country_box, "country_name");
+                AllSelection();
+
+                if (GridViewOfSearch.Rows.Count != 0)
+                {
+                    pcam_sel = GridViewOfSearch[0, GridViewOfSearch.CurrentRow.Index].Value.ToString();
+                    pcam_box.Text = pcam_sel;
+                    pcam_box.Enabled = false;
+                }
+                else
+                {
+                    pcam_box.Enabled = true;
+                    pcam_box.SelectedIndex = -1;
+                    pcam_box.Refresh();
+                    AllSelection();
+                }
             }
-            else MessageBox.Show("Заполните все поля (РСАМ можно не заполнять)");
+            else
+            {
+                message = "Заполните все поля (РСАМ можно не заполнять)";
+                MessageOfSearch?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void Reset_button_Click(object sender, EventArgs e)
@@ -155,6 +179,7 @@ namespace ElectricData
             country_box.Refresh();
             extra_text.Text = "";
             selectAllBindingSource.RemoveFilter();
+            pcam_box.Enabled = true;
         }
 
         private void SelectTableString (ComboBox box, string select_row)
@@ -165,6 +190,19 @@ namespace ElectricData
         private void SelectTableInt (ComboBox box, string select_row)
         {
             selectAllBindingSource.Filter += "AND Convert([" + select_row + "],'System.String') LIKE '" + box.Text + "%'";
+        }
+
+        private void AllSelection()
+        {
+            selectAllBindingSource.Filter = "[counter_name] LIKE'" + counters_box.Text + "%'";
+            SelectTableString(bloks_box, "bloks_name");
+            SelectTableInt(amper_box, "ammeters_count");
+            SelectTableString(volt_box, "volt_ind");
+            SelectTableInt(inputs_box, "inputs_count");
+            SelectTableString(convertI_box, "conv_i");
+            SelectTableString(convertU_box, "conv_u");
+            SelectTableString(krm_box, "krm_ind");
+            SelectTableString(country_box, "country_name");
         }
         #endregion
 

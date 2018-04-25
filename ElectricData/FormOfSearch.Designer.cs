@@ -95,6 +95,7 @@
             this.selectAllTableAdapter = new ElectricData.MainDBDataSetTableAdapters.SelectAllTableAdapter();
             this.Search_button = new MetroFramework.Controls.MetroButton();
             this.Reset_button = new MetroFramework.Controls.MetroButton();
+            this.Note_textbox = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_PCAM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_counters)).BeginInit();
@@ -113,9 +114,8 @@
             // 
             // pcam_box
             // 
-            this.pcam_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcam_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pcam_box.DataSource = this.bindingSource_PCAM;
             this.pcam_box.DisplayMember = "PCAM";
             this.pcam_box.FormattingEnabled = true;
@@ -147,9 +147,8 @@
             // counters_box
             // 
             this.counters_box.AccessibleName = "Счётчики";
-            this.counters_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.counters_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.counters_box.DataSource = this.bindingSource_counters;
             this.counters_box.DisplayMember = "counter_name";
             this.counters_box.FormattingEnabled = true;
@@ -176,9 +175,8 @@
             // bloks_box
             // 
             this.bloks_box.AccessibleName = "Колодка";
-            this.bloks_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bloks_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.bloks_box.DataSource = this.bindingSource_bloks;
             this.bloks_box.DisplayMember = "bloks_name";
             this.bloks_box.FormattingEnabled = true;
@@ -401,7 +399,7 @@
             // DataEditor_button
             // 
             this.DataEditor_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DataEditor_button.Location = new System.Drawing.Point(30, 429);
+            this.DataEditor_button.Location = new System.Drawing.Point(30, 501);
             this.DataEditor_button.Name = "DataEditor_button";
             this.DataEditor_button.Size = new System.Drawing.Size(120, 70);
             this.DataEditor_button.TabIndex = 21;
@@ -410,7 +408,7 @@
             // OpenFolder_button
             // 
             this.OpenFolder_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OpenFolder_button.Location = new System.Drawing.Point(167, 429);
+            this.OpenFolder_button.Location = new System.Drawing.Point(167, 501);
             this.OpenFolder_button.Name = "OpenFolder_button";
             this.OpenFolder_button.Size = new System.Drawing.Size(120, 70);
             this.OpenFolder_button.TabIndex = 22;
@@ -419,7 +417,7 @@
             // ExitOfSearch_button
             // 
             this.ExitOfSearch_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitOfSearch_button.Location = new System.Drawing.Point(444, 429);
+            this.ExitOfSearch_button.Location = new System.Drawing.Point(444, 501);
             this.ExitOfSearch_button.Name = "ExitOfSearch_button";
             this.ExitOfSearch_button.Size = new System.Drawing.Size(120, 70);
             this.ExitOfSearch_button.TabIndex = 24;
@@ -451,7 +449,7 @@
             this.GridViewOfSearch.Name = "GridViewOfSearch";
             this.GridViewOfSearch.ReadOnly = true;
             this.GridViewOfSearch.RowHeadersVisible = false;
-            this.GridViewOfSearch.Size = new System.Drawing.Size(214, 140);
+            this.GridViewOfSearch.Size = new System.Drawing.Size(214, 212);
             this.GridViewOfSearch.TabIndex = 24;
             // 
             // pCAMDataGridViewTextBoxColumn
@@ -481,67 +479,75 @@
             // 
             // inputs_count
             // 
+            this.inputs_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.inputs_count.DataPropertyName = "inputs_count";
             this.inputs_count.HeaderText = "Ввод";
             this.inputs_count.Name = "inputs_count";
             this.inputs_count.ReadOnly = true;
-            this.inputs_count.Visible = false;
+            this.inputs_count.Width = 57;
             // 
             // bloks_name
             // 
+            this.bloks_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.bloks_name.DataPropertyName = "bloks_name";
             this.bloks_name.HeaderText = "Колодка";
             this.bloks_name.Name = "bloks_name";
             this.bloks_name.ReadOnly = true;
-            this.bloks_name.Visible = false;
+            this.bloks_name.Width = 75;
             // 
             // ammeters_count
             // 
+            this.ammeters_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ammeters_count.DataPropertyName = "ammeters_count";
             this.ammeters_count.HeaderText = "Амперметры";
             this.ammeters_count.Name = "ammeters_count";
             this.ammeters_count.ReadOnly = true;
-            this.ammeters_count.Visible = false;
+            this.ammeters_count.Width = 98;
             // 
             // conv_i
             // 
+            this.conv_i.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.conv_i.DataPropertyName = "conv_i";
             this.conv_i.HeaderText = "Преобразователи I";
             this.conv_i.Name = "conv_i";
             this.conv_i.ReadOnly = true;
-            this.conv_i.Visible = false;
+            this.conv_i.Width = 129;
             // 
             // conv_u
             // 
+            this.conv_u.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.conv_u.DataPropertyName = "conv_u";
             this.conv_u.HeaderText = "Преобразователи U";
             this.conv_u.Name = "conv_u";
             this.conv_u.ReadOnly = true;
-            this.conv_u.Visible = false;
+            this.conv_u.Width = 123;
             // 
             // country_name
             // 
+            this.country_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.country_name.DataPropertyName = "country_name";
             this.country_name.HeaderText = "Страна";
             this.country_name.Name = "country_name";
             this.country_name.ReadOnly = true;
-            this.country_name.Visible = false;
+            this.country_name.Width = 68;
             // 
             // krm_ind
             // 
+            this.krm_ind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.krm_ind.DataPropertyName = "krm_ind";
             this.krm_ind.HeaderText = "КРМ";
             this.krm_ind.Name = "krm_ind";
             this.krm_ind.ReadOnly = true;
-            this.krm_ind.Visible = false;
+            this.krm_ind.Width = 55;
             // 
             // volt_ind
             // 
+            this.volt_ind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.volt_ind.DataPropertyName = "volt_ind";
             this.volt_ind.HeaderText = "Вольтметры";
             this.volt_ind.Name = "volt_ind";
             this.volt_ind.ReadOnly = true;
-            this.volt_ind.Visible = false;
+            this.volt_ind.Width = 95;
             // 
             // selectAllBindingSource
             // 
@@ -554,7 +560,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.extra_text.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.extra_text.FontWeight = MetroFramework.MetroTextBoxWeight.Bold;
-            this.extra_text.Location = new System.Drawing.Point(350, 384);
+            this.extra_text.Location = new System.Drawing.Point(350, 456);
+            this.extra_text.Multiline = true;
             this.extra_text.Name = "extra_text";
             this.extra_text.Size = new System.Drawing.Size(214, 30);
             this.extra_text.TabIndex = 25;
@@ -572,7 +579,7 @@
             // 
             this.extra_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.extra_label.AutoSize = true;
-            this.extra_label.Location = new System.Drawing.Point(350, 349);
+            this.extra_label.Location = new System.Drawing.Point(350, 421);
             this.extra_label.Name = "extra_label";
             this.extra_label.Size = new System.Drawing.Size(109, 19);
             this.extra_label.TabIndex = 27;
@@ -625,7 +632,7 @@
             // SelectCircuit_button
             // 
             this.SelectCircuit_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectCircuit_button.Location = new System.Drawing.Point(305, 429);
+            this.SelectCircuit_button.Location = new System.Drawing.Point(305, 501);
             this.SelectCircuit_button.Name = "SelectCircuit_button";
             this.SelectCircuit_button.Size = new System.Drawing.Size(120, 70);
             this.SelectCircuit_button.TabIndex = 23;
@@ -638,7 +645,6 @@
             // 
             // Search_button
             // 
-            this.Search_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Search_button.Location = new System.Drawing.Point(465, 63);
             this.Search_button.Name = "Search_button";
             this.Search_button.Size = new System.Drawing.Size(99, 54);
@@ -648,7 +654,6 @@
             // 
             // Reset_button
             // 
-            this.Reset_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Reset_button.Location = new System.Drawing.Point(465, 133);
             this.Reset_button.Name = "Reset_button";
             this.Reset_button.Size = new System.Drawing.Size(99, 54);
@@ -656,11 +661,24 @@
             this.Reset_button.Text = "Сброс";
             this.Reset_button.Click += new System.EventHandler(this.Reset_button_Click);
             // 
+            // Note_textbox
+            // 
+            this.Note_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.Note_textbox.Enabled = false;
+            this.Note_textbox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.Note_textbox.Location = new System.Drawing.Point(30, 421);
+            this.Note_textbox.Multiline = true;
+            this.Note_textbox.Name = "Note_textbox";
+            this.Note_textbox.Size = new System.Drawing.Size(299, 65);
+            this.Note_textbox.TabIndex = 30;
+            // 
             // FormOfSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 520);
+            this.ClientSize = new System.Drawing.Size(584, 592);
+            this.Controls.Add(this.Note_textbox);
             this.Controls.Add(this.Reset_button);
             this.Controls.Add(this.Search_button);
             this.Controls.Add(this.SelectCircuit_button);
@@ -770,6 +788,8 @@
         private System.Windows.Forms.BindingSource selectAllBindingSource;
         private MetroFramework.Controls.MetroButton SelectCircuit_button;
         private MainDBDataSetTableAdapters.SelectAllTableAdapter selectAllTableAdapter;
+        private MetroFramework.Controls.MetroButton Search_button;
+        private MetroFramework.Controls.MetroButton Reset_button;
         private System.Windows.Forms.DataGridViewTextBoxColumn pCAMDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn number_of_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn counter_name;
@@ -781,8 +801,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn country_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn krm_ind;
         private System.Windows.Forms.DataGridViewTextBoxColumn volt_ind;
-        private MetroFramework.Controls.MetroButton Search_button;
-        private MetroFramework.Controls.MetroButton Reset_button;
+        private MetroFramework.Controls.MetroTextBox Note_textbox;
     }
 }
 

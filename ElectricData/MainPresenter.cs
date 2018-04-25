@@ -21,9 +21,9 @@ namespace ElectricData
         public MainPresenter (IFormOfConnection connection, IFormOfSelect select, IFormOfDataEditor editor, IFormOfSearch search, IMessageService service, IDataBaseManager manager)
         {
             #region WinForm - инициализация переменных
-            formOfSelect = (FormOfSelect) select;
-            formOfSearch = (FormOfSearch) search;
-            formOfDE = (FormOfDataEditor) editor;
+            formOfDE = (FormOfDataEditor)editor;
+            formOfSelect = (FormOfSelect)select;
+            formOfSearch = (FormOfSearch)search;
             #endregion
 
             _connection = connection;
@@ -44,8 +44,6 @@ namespace ElectricData
             _search.BackToSelect += _connection_OpenSelect;
             _search.MessageOfSearch += _search_MessageOfSearch;
 
-            _editor.SaveChanges += _editor_SaveChanges;
-            _editor.TableChange += _editor_TableChange;
             _editor.BackToSearch += _select_OpenSearch;
         }
 
@@ -79,16 +77,6 @@ namespace ElectricData
         private void _search_OpenFolder(object sender, EventArgs e)
         {
             _search.Link = _manager.Select_Note(_search.PCAM_link, "link");
-        }
-
-        private void _editor_TableChange(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void _editor_SaveChanges(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void _connection_DBconnect(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
@@ -6,12 +7,11 @@ namespace ElectricData
 {
     public interface IFormOfDataEditor
     {
-        event EventHandler TableChange;
-        event EventHandler SaveChanges;
         event EventHandler BackToSearch;
     }
     public partial class FormOfDataEditor : MetroForm, IFormOfDataEditor
     {
+        DataView view = new DataView();
         public FormOfDataEditor()
         {
             InitializeComponent();
@@ -37,34 +37,69 @@ namespace ElectricData
 
         private void FormOfDataEditor_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.country". При необходимости она может быть перемещена или удалена.
             this.countryTableAdapter.Fill(this.mainDBDataSet.country);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.voltmeters". При необходимости она может быть перемещена или удалена.
             this.voltmetersTableAdapter.Fill(this.mainDBDataSet.voltmeters);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.krm". При необходимости она может быть перемещена или удалена.
             this.krmTableAdapter.Fill(this.mainDBDataSet.krm);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.converters_u". При необходимости она может быть перемещена или удалена.
             this.converters_uTableAdapter.Fill(this.mainDBDataSet.converters_u);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.converters_i". При необходимости она может быть перемещена или удалена.
             this.converters_iTableAdapter.Fill(this.mainDBDataSet.converters_i);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.bloks". При необходимости она может быть перемещена или удалена.
             this.bloksTableAdapter.Fill(this.mainDBDataSet.bloks);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.ammeters". При необходимости она может быть перемещена или удалена.
             this.ammetersTableAdapter.Fill(this.mainDBDataSet.ammeters);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.inputs". При необходимости она может быть перемещена или удалена.
             this.inputsTableAdapter.Fill(this.mainDBDataSet.inputs);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.counters". При необходимости она может быть перемещена или удалена.
             this.countersTableAdapter.Fill(this.mainDBDataSet.counters);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.regist". При необходимости она может быть перемещена или удалена.
             this.registTableAdapter.Fill(this.mainDBDataSet.regist);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet.SelectAll". При необходимости она может быть перемещена или удалена.
+            GridViewOfDataEditor.AllowUserToAddRows = false;
+            table_select_box.SelectedIndex = 0;
         }
         #endregion
 
         #region IFormOfDataEditor
         public event EventHandler BackToSearch;
-        public event EventHandler TableChange;
-        public event EventHandler SaveChanges;
         #endregion
+
+        private void table_select_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Move_table(table_select_box.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Select_table(BindingSource binding, string columns_name)
+        {
+            GridViewOfDataEditor.Columns.Clear();
+            GridViewOfDataEditor.DataSource = binding;
+            bindingNavigatorOfDataEditor.BindingSource = binding;
+            GridViewOfDataEditor.AutoGenerateColumns = true;
+            GridViewOfDataEditor.AutoResizeColumns();
+            GridViewOfDataEditor.Columns[0].Visible = false;
+            GridViewOfDataEditor.Columns[1].HeaderText = columns_name;
+            GridViewOfDataEditor.AllowUserToAddRows = false;
+        }
+
+        private void Select_PCAMtable()
+        {
+            Select_table(registBindingSource, "PCAM");
+        }
+
+        private void Move_table (string box_name)
+        {
+            switch (box_name)
+            {
+                case "Счётчики": Select_table(countersBindingSource, "Счётчик"); break;
+                case "Колодки": Select_table(bloksBindingSource, "Колодка"); break;
+                case "Ввод": Select_table(inputsBindingSource, "Кол-во вводов"); break;
+                case "Амперметры": Select_table(ammetersBindingSource, "Кол-во амперметров"); break;
+                case "Вольтметры": Select_table(voltmetersBindingSource, "Кол-во вольтметров"); break;
+                case "Преобразователи I": Select_table(convertersiBindingSource, "Наличие преобразователей тока"); break;
+                case "Преобразователи U": Select_table(convertersuBindingSource, "Наличие преобразователей напряжения"); break;
+                case "КРМ": Select_table(krmBindingSource, "Наличие клемм для КРМ"); break;
+                case "Страна": Select_table(countryBindingSource, "Страна"); break;
+                default: Select_PCAMtable(); break;
+            }
+        }
     }
 }
