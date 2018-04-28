@@ -714,6 +714,7 @@
             this.Text = "Учёт электроэнергии";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormOfSearch_FormClosed);
             this.Load += new System.EventHandler(this.FormOfSearch_Load);
+            this.VisibleChanged += new System.EventHandler(this.FormOfSearch_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_PCAM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_counters)).EndInit();

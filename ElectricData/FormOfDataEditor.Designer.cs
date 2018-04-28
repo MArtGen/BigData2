@@ -68,6 +68,7 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.table_select_box = new System.Windows.Forms.ToolStripComboBox();
             this.Save_button = new System.Windows.Forms.ToolStripButton();
             this.Exit_button = new System.Windows.Forms.ToolStripButton();
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -97,7 +98,6 @@
             this.krmTableAdapter = new ElectricData.MainDBDataSetTableAdapters.krmTableAdapter();
             this.voltmetersTableAdapter = new ElectricData.MainDBDataSetTableAdapters.voltmetersTableAdapter();
             this.countryTableAdapter = new ElectricData.MainDBDataSetTableAdapters.countryTableAdapter();
-            this.table_select_box = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewOfDataEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
@@ -431,6 +431,23 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // table_select_box
+            // 
+            this.table_select_box.Items.AddRange(new object[] {
+            "РСАМ (полная таблица)",
+            "Счётчики",
+            "Колодки",
+            "Ввод",
+            "Амперметры",
+            "Вольтметры",
+            "Преобразователи I",
+            "Преобразователи U",
+            "КРМ",
+            "Страна"});
+            this.table_select_box.Name = "table_select_box";
+            this.table_select_box.Size = new System.Drawing.Size(170, 25);
+            this.table_select_box.SelectedIndexChanged += new System.EventHandler(this.table_select_box_SelectedIndexChanged);
+            // 
             // Save_button
             // 
             this.Save_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -438,7 +455,7 @@
             this.Save_button.ImageTransparentColor = System.Drawing.Color.DarkCyan;
             this.Save_button.Name = "Save_button";
             this.Save_button.Size = new System.Drawing.Size(23, 22);
-            this.Save_button.Text = "Save";
+            this.Save_button.Text = "Сохранить";
             this.Save_button.Click += new System.EventHandler(this.Save_button_Click);
             // 
             // Exit_button
@@ -448,7 +465,7 @@
             this.Exit_button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Exit_button.Name = "Exit_button";
             this.Exit_button.Size = new System.Drawing.Size(23, 22);
-            this.Exit_button.Text = "BackToSearch";
+            this.Exit_button.Text = "Назад в поиск";
             // 
             // mainDBDataSetBindingSource
             // 
@@ -595,23 +612,6 @@
             // countryTableAdapter
             // 
             this.countryTableAdapter.ClearBeforeFill = true;
-            // 
-            // table_select_box
-            // 
-            this.table_select_box.Items.AddRange(new object[] {
-            "РСАМ (полная таблица)",
-            "Счётчики",
-            "Колодки",
-            "Ввод",
-            "Амперметры",
-            "Вольтметры",
-            "Преобразователи I",
-            "Преобразователи U",
-            "КРМ",
-            "Страна"});
-            this.table_select_box.Name = "table_select_box";
-            this.table_select_box.Size = new System.Drawing.Size(170, 25);
-            this.table_select_box.SelectedIndexChanged += new System.EventHandler(this.table_select_box_SelectedIndexChanged);
             // 
             // FormOfDataEditor
             // 

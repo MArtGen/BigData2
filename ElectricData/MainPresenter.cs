@@ -44,7 +44,7 @@ namespace ElectricData
             _search.BackToSelect += _connection_OpenSelect;
             _search.MessageOfSearch += _search_MessageOfSearch;
 
-            _editor.BackToSearch += _select_OpenSearch;
+            _editor.BackToSearch += _editor_BackToSearch; ;
         }
 
         #region WinForm - события загрузки форм
@@ -60,6 +60,12 @@ namespace ElectricData
 
         private void _select_OpenSearch(object sender, EventArgs e)
         {
+            formOfSearch.Show();
+        }
+
+        private void _editor_BackToSearch(object sender, EventArgs e)
+        {
+            _search.Back_to_search = true;
             formOfSearch.Show();
         }
         #endregion
