@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOfConnectionDB));
             this.serverName_text = new MetroFramework.Controls.MetroTextBox();
             this.serverName_label = new MetroFramework.Controls.MetroLabel();
             this.dbname_label = new MetroFramework.Controls.MetroLabel();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.dbname_label);
             this.Controls.Add(this.serverName_label);
             this.Controls.Add(this.serverName_text);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(900, 237);
             this.MinimumSize = new System.Drawing.Size(382, 237);
             this.Name = "FormOfConnectionDB";

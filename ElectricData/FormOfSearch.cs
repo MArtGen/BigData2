@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Data;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.Collections.Generic;
@@ -20,8 +19,10 @@ namespace ElectricData
         event EventHandler OpenDataEditor;
         event EventHandler BackToSelect;
         event EventHandler MessageOfSearch;
+        event EventHandler ErrorOfSearch;
     }
 
+    //Форма поиска схем учётов
     public partial class FormOfSearch : MetroForm, IFormOfSearch
     {
         List<string> item_search;
@@ -38,6 +39,7 @@ namespace ElectricData
         }
 
         #region События формы Search
+        //Выборка схемы по РСАМ
         private void Pcam_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             pcam_link = pcam_box.Text;
@@ -46,16 +48,19 @@ namespace ElectricData
             selectAllBindingSource.Filter = "[PCAM] LIKE'" + pcam_link +"%'";
         }
 
+        //Обработка события нажатия кнопки закрытия формы поиска
         private void ExitOfSearch_button_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //Обработка события закрытия формы поиска
         private void FormOfSearch_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
+        //Обработчик кнопки открытия папки с выбранной схемой
         private void OpenFolder_button_Click(object sender, EventArgs e)
         {
             pcam_link = pcam_box.Text;
@@ -69,55 +74,67 @@ namespace ElectricData
             }
         }
 
+        //Обработчик кнопки открытия редактора таблиц
         private void DataEditor_button_Click(object sender, EventArgs e)
         {
             OpenDataEditor?.Invoke(this, EventArgs.Empty);
             Hide();
         }
 
+        //Загрузка формы поиска
         private void FormOfSearch_Load(object sender, EventArgs e)
         {
-            selectAllTableAdapter.Fill(mainDBDataSet.SelectAll);
-            this.countryTableAdapter.Fill(this.mainDBDataSet.country);
-            country_box.SelectedIndex = -1;
+            try
+            {
+                selectAllTableAdapter.Fill(mainDBDataSet.SelectAll);
+                this.countryTableAdapter.Fill(this.mainDBDataSet.country);
+                country_box.SelectedIndex = -1;
 
-            this.krmTableAdapter.Fill(this.mainDBDataSet.krm);
-            krm_box.SelectedIndex = -1;
+                this.krmTableAdapter.Fill(this.mainDBDataSet.krm);
+                krm_box.SelectedIndex = -1;
 
-            this.converters_uTableAdapter.Fill(this.mainDBDataSet.converters_u);
-            convertU_box.SelectedIndex = -1;
+                this.converters_uTableAdapter.Fill(this.mainDBDataSet.converters_u);
+                convertU_box.SelectedIndex = -1;
 
-            this.converters_iTableAdapter.Fill(this.mainDBDataSet.converters_i);
-            convertI_box.SelectedIndex = -1;
+                this.converters_iTableAdapter.Fill(this.mainDBDataSet.converters_i);
+                convertI_box.SelectedIndex = -1;
 
-            this.inputsTableAdapter.Fill(this.mainDBDataSet.inputs);
-            inputs_box.SelectedIndex = -1;
+                this.inputsTableAdapter.Fill(this.mainDBDataSet.inputs);
+                inputs_box.SelectedIndex = -1;
 
-            this.voltmetersTableAdapter.Fill(this.mainDBDataSet.voltmeters);
-            volt_box.SelectedIndex = -1;
+                this.voltmetersTableAdapter.Fill(this.mainDBDataSet.voltmeters);
+                volt_box.SelectedIndex = -1;
 
-            this.ammetersTableAdapter.Fill(this.mainDBDataSet.ammeters);
-            amper_box.SelectedIndex = -1;
+                this.ammetersTableAdapter.Fill(this.mainDBDataSet.ammeters);
+                amper_box.SelectedIndex = -1;
 
-            this.bloksTableAdapter.Fill(this.mainDBDataSet.bloks);
-            bloks_box.SelectedIndex = -1;
+                this.bloksTableAdapter.Fill(this.mainDBDataSet.bloks);
+                bloks_box.SelectedIndex = -1;
 
-            this.countersTableAdapter.Fill(this.mainDBDataSet.counters);
-            counters_box.SelectedIndex = -1;
+                this.countersTableAdapter.Fill(this.mainDBDataSet.counters);
+                counters_box.SelectedIndex = -1;
 
-            this.registTableAdapter.Fill(this.mainDBDataSet.regist);
-            pcam_box.SelectedIndex = -1;
+                this.registTableAdapter.Fill(this.mainDBDataSet.regist);
+                pcam_box.SelectedIndex = -1;
 
-            this.selectPCAMTableAdapter.Fill(this.mainDBDataSet.SelectPCAM);
-            Load_extra();
+                this.selectPCAMTableAdapter.Fill(this.mainDBDataSet.SelectPCAM);
+                Load_extra();
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                ErrorOfSearch?.Invoke(this, EventArgs.Empty);
+            }
         }
 
+        //Обработчик кнопки выбора схем
         private void SelectCircuit_button_Click(object sender, EventArgs e)
         {
             BackToSelect?.Invoke(this, EventArgs.Empty);
             Hide();
         }
 
+        //Обработчик кнопки поиска
         private void Search_button_Click(object sender, EventArgs e)
         {
             if (counters_box.Text != "" && bloks_box.Text !="" && amper_box.Text != "" && 
@@ -128,7 +145,7 @@ namespace ElectricData
 
                 if (GridViewOfSearch.Rows.Count != 0)
                 {
-                    pcam_sel = GridViewOfSearch[0, GridViewOfSearch.CurrentRow.Index].Value.ToString();
+                    pcam_sel = GridViewOfSearch[0, GridViewOfSearch.CurrentRow.Index].Value.ToString(); //Выбор записи РСАМ из базы данных и запись её в переменную
                     pcam_box.Text = pcam_sel;
                     pcam_box.Enabled = false;
                 }
@@ -147,6 +164,7 @@ namespace ElectricData
             }
         }
 
+        //Обработчик кнопки сброса
         private void Reset_button_Click(object sender, EventArgs e)
         {
             pcam_box.SelectedIndex = -1;
@@ -174,13 +192,15 @@ namespace ElectricData
             pcam_box.Enabled = true;
         }
 
+        //Выход из редактора таблиц в форму поиска
         private void FormOfSearch_VisibleChanged(object sender, EventArgs e)
         {
-            if (Visible == true && back == true)
+            if (Visible == true && back == true) //Проверка на показ формы поиска из формы редактора таблиц
             {
-                registTableAdapter.Fill(mainDBDataSet.regist);
-                bindingSource_PCAM.ResetBindings(false);
+                registTableAdapter.Fill(mainDBDataSet.regist); //Перезапись адаптера
+                bindingSource_PCAM.ResetBindings(false); //Обновление bindingsource
                 pcam_box.SelectedIndex = -1;
+                pcam_box.Enabled = true;
 
                 countersTableAdapter.Fill(mainDBDataSet.counters);
                 bindingSource_counters.ResetBindings(false);
@@ -226,47 +246,57 @@ namespace ElectricData
         #endregion
 
         #region IFormOfSearch
+        //Список элементов в базе данный
         public List<string> Search_of_items
         {
             get { return item_search; }
             set { item_search = value; }
         }
 
+        //Ссылка
         public string Link
         {
             set { link = value; }
         }
 
+        //Дополнительная информация
         public string Extra
         {
             set { extra = value; }
         }
 
+        //Ссылка РСАМа
         public string PCAM_link
         {
             get { return pcam_link; }
             set { pcam_link = value; }
         }
 
+        //Передаваемое сообщение
         public string Message
         {
             get { return message; }
             set { message = value; }
         }
 
+        //Возврат в поиск
         public bool Back_to_search
         {
             get { return back; }
             set { back = value; }
         }
 
+        //Проброс событий формы
         public event EventHandler OpenFolder;
         public event EventHandler Select_Extra;
         public event EventHandler OpenDataEditor;
         public event EventHandler BackToSelect;
         public event EventHandler MessageOfSearch;
+        public event EventHandler ErrorOfSearch;
         #endregion
 
+        #region Методы формы поиска
+        //Загрузка информации по схемам учёта в целом
         private void Load_extra()
         {
             try
@@ -279,20 +309,24 @@ namespace ElectricData
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show(ex.Message);
+                message = ex.Message;
+                ErrorOfSearch?.Invoke(this, EventArgs.Empty);
             }
         }
 
+        //Фильтр String в DataGridView
         private void SelectTableString(ComboBox box, string select_row)
         {
             selectAllBindingSource.Filter += "AND [" + select_row + "] LIKE '" + box.Text + "%'";
         }
 
+        //Фильтр Int в DataGridView
         private void SelectTableInt(ComboBox box, string select_row)
         {
             selectAllBindingSource.Filter += "AND Convert([" + select_row + "],'System.String') LIKE '" + box.Text + "%'";
         }
 
+        //Формирование общего фильра для поиска
         private void AllSelection()
         {
             selectAllBindingSource.Filter = "[counter_name] LIKE'" + counters_box.Text + "%'";
@@ -305,5 +339,6 @@ namespace ElectricData
             SelectTableString(krm_box, "krm_ind");
             SelectTableString(country_box, "country_name");
         }
+        #endregion
     }
 }

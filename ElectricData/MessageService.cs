@@ -8,6 +8,8 @@ namespace ElectricData
         void ShowExclamation(string exclamation);
         void ShowError(string error);
     }
+
+    //Класс вывода сообщений, предупреждений и ошибок
     public class MessageService: IMessageService
     {
         public void ShowMessage(string message)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOfSelect));
             this.SelectOfSort_box = new MetroFramework.Controls.MetroComboBox();
             this.bindingSource_circuits = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new ElectricData.MainDBDataSet();
@@ -92,6 +93,7 @@
             this.Controls.Add(this.ExitSelect_button);
             this.Controls.Add(this.SelectSort_button);
             this.Controls.Add(this.SelectOfSort_box);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(900, 198);
             this.MinimumSize = new System.Drawing.Size(368, 198);
             this.Name = "FormOfSelect";

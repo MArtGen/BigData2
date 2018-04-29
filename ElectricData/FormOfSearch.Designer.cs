@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOfSearch));
             this.pcam_box = new MetroFramework.Controls.MetroComboBox();
             this.bindingSource_PCAM = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new ElectricData.MainDBDataSet();
@@ -709,6 +710,7 @@
             this.Controls.Add(this.counters_box);
             this.Controls.Add(this.pcam_label);
             this.Controls.Add(this.pcam_box);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(584, 520);
             this.Name = "FormOfSearch";
             this.Text = "Учёт электроэнергии";

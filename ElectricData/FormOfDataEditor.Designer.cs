@@ -620,6 +620,7 @@
             this.ClientSize = new System.Drawing.Size(570, 420);
             this.Controls.Add(this.bindingNavigatorOfDataEditor);
             this.Controls.Add(this.GridViewOfDataEditor);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(570, 420);
             this.Name = "FormOfDataEditor";
             this.Text = "Редактор базы данных";

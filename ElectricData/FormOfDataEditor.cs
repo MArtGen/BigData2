@@ -6,10 +6,17 @@ namespace ElectricData
 {
     public interface IFormOfDataEditor
     {
+        string Message { get; set; }
         event EventHandler BackToSearch;
+        event EventHandler ErrorOfDE;
+        event EventHandler MessageOfDE;
     }
+
+    //Форма редактора баз данных (редактора таблиц)
     public partial class FormOfDataEditor : MetroForm, IFormOfDataEditor
     {
+        string message;
+
         public FormOfDataEditor()
         {
             InitializeComponent();
@@ -17,33 +24,46 @@ namespace ElectricData
         }
 
         #region События формы DataEditor
-   
+        //Обработка кнопки возврата в поисковую форму
         private void ExitOfDataEditor_button_Click(object sender, EventArgs e)
         {
             BackToSearch?.Invoke(this, EventArgs.Empty);
             Hide();
         }
 
+        //Обработка закрытия формы редактора
         private void FormOfDataEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
             Hide();
             Application.Exit();
         }
 
+        //Обработка кнопки сохранения
         private void Save_button_Click(object sender, EventArgs e)
         {
-            registTableAdapter.Update(mainDBDataSet);
-            countersTableAdapter.Update(mainDBDataSet);
-            bloksTableAdapter.Update(mainDBDataSet);
-            inputsTableAdapter.Update(mainDBDataSet);
-            ammetersTableAdapter.Update(mainDBDataSet);
-            voltmetersTableAdapter.Update(mainDBDataSet);
-            converters_iTableAdapter.Update(mainDBDataSet);
-            converters_uTableAdapter.Update(mainDBDataSet);
-            krmTableAdapter.Update(mainDBDataSet);
-            countryTableAdapter.Update(mainDBDataSet);
+            try
+            {
+                registTableAdapter.Update(mainDBDataSet);
+                countersTableAdapter.Update(mainDBDataSet);
+                bloksTableAdapter.Update(mainDBDataSet);
+                inputsTableAdapter.Update(mainDBDataSet);
+                ammetersTableAdapter.Update(mainDBDataSet);
+                voltmetersTableAdapter.Update(mainDBDataSet);
+                converters_iTableAdapter.Update(mainDBDataSet);
+                converters_uTableAdapter.Update(mainDBDataSet);
+                krmTableAdapter.Update(mainDBDataSet);
+                countryTableAdapter.Update(mainDBDataSet);
+                message = "Сохранение прошло успешно";
+                MessageOfDE?.Invoke(this, EventArgs.Empty);
+            }
+            catch
+            {
+                message = "Ошибка сохранения данных";
+                ErrorOfDE?.Invoke(this, EventArgs.Empty);
+            }
         }
 
+        //Событие по изменению выбора таблиц в combobox
         private void table_select_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -52,35 +72,54 @@ namespace ElectricData
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                message = ex.Message;
+                ErrorOfDE?.Invoke(this, EventArgs.Empty);
             }
         }
 
+        //Событие загрузки формы
         private void FormOfDataEditor_Load(object sender, EventArgs e)
         {
-            this.countryTableAdapter.Fill(this.mainDBDataSet.country);
-            this.voltmetersTableAdapter.Fill(this.mainDBDataSet.voltmeters);
-            this.krmTableAdapter.Fill(this.mainDBDataSet.krm);
-            this.converters_uTableAdapter.Fill(this.mainDBDataSet.converters_u);
-            this.converters_iTableAdapter.Fill(this.mainDBDataSet.converters_i);
-            this.bloksTableAdapter.Fill(this.mainDBDataSet.bloks);
-            this.ammetersTableAdapter.Fill(this.mainDBDataSet.ammeters);
-            this.inputsTableAdapter.Fill(this.mainDBDataSet.inputs);
-            this.countersTableAdapter.Fill(this.mainDBDataSet.counters);
-            this.registTableAdapter.Fill(this.mainDBDataSet.regist);
-            GridViewOfDataEditor.AllowUserToAddRows = false;
-            table_select_box.SelectedIndex = 0;
-            table_select_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            try
+            {
+                this.countryTableAdapter.Fill(this.mainDBDataSet.country);
+                this.voltmetersTableAdapter.Fill(this.mainDBDataSet.voltmeters);
+                this.krmTableAdapter.Fill(this.mainDBDataSet.krm);
+                this.converters_uTableAdapter.Fill(this.mainDBDataSet.converters_u);
+                this.converters_iTableAdapter.Fill(this.mainDBDataSet.converters_i);
+                this.bloksTableAdapter.Fill(this.mainDBDataSet.bloks);
+                this.ammetersTableAdapter.Fill(this.mainDBDataSet.ammeters);
+                this.inputsTableAdapter.Fill(this.mainDBDataSet.inputs);
+                this.countersTableAdapter.Fill(this.mainDBDataSet.counters);
+                this.registTableAdapter.Fill(this.mainDBDataSet.regist);
+                GridViewOfDataEditor.AllowUserToAddRows = false; //Удаление строки добавления в конце основной таблицы
+                table_select_box.SelectedIndex = 0;
+                table_select_box.DropDownStyle = ComboBoxStyle.DropDownList; //Запрет на запись в combobox
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                ErrorOfDE?.Invoke(this, EventArgs.Empty);
+            }
         }
-
         #endregion
 
         #region IFormOfDataEditor
+        //Передаваемое сообщение
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
 
+        //Проброс событий формы
         public event EventHandler BackToSearch;
-
+        public event EventHandler ErrorOfDE;
+        public event EventHandler MessageOfDE;
         #endregion
 
+        #region Методы DataEditor
+        //Формирование вспомогательных таблиц
         private void Select_table(BindingSource binding, string columns_name)
         {
             GridViewOfDataEditor.Columns.Clear();
@@ -93,6 +132,7 @@ namespace ElectricData
             GridViewOfDataEditor.AllowUserToAddRows = false;
         }
 
+        //Формирование основной таблицы
         private void Select_PCAMtable()
         {
             GridViewOfDataEditor.DataSource = registBindingSource;
@@ -117,6 +157,7 @@ namespace ElectricData
             GridViewOfDataEditor.AllowUserToAddRows = false;
         }
 
+        //Заполнение combobox основной таблицы
         private void Fill_combobox(string header, string name, BindingSource source, string d_member)
         {
             DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
@@ -128,6 +169,7 @@ namespace ElectricData
             GridViewOfDataEditor.Columns.Add(combo);
         }
 
+        //Заполнение textbox основной таблицы
         private void Fill_textbox(string header, string name)
         {
             DataGridViewTextBoxColumn text = new DataGridViewTextBoxColumn();
@@ -136,6 +178,7 @@ namespace ElectricData
             GridViewOfDataEditor.Columns.Add(text);
         }
 
+        //Выборка таблиц из combobox
         private void Move_table (string box_name)
         {
             switch (box_name)
@@ -144,7 +187,7 @@ namespace ElectricData
                 case "Колодки": Select_table(bloksBindingSource, "Колодка"); break;
                 case "Ввод": Select_table(inputsBindingSource, "Кол-во вводов"); break;
                 case "Амперметры": Select_table(ammetersBindingSource, "Кол-во амперметров"); break;
-                case "Вольтметры": Select_table(voltmetersBindingSource, "Кол-во вольтметров"); break;
+                case "Вольтметры": Select_table(voltmetersBindingSource, "Вольтметры"); break;
                 case "Преобразователи I": Select_table(convertersiBindingSource, "Наличие преобразователей тока"); break;
                 case "Преобразователи U": Select_table(convertersuBindingSource, "Наличие преобразователей напряжения"); break;
                 case "КРМ": Select_table(krmBindingSource, "Наличие клемм для КРМ"); break;
@@ -152,5 +195,6 @@ namespace ElectricData
                 default: Select_PCAMtable(); break;
             }
         }
+        #endregion
     }
 }

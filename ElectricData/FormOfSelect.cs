@@ -8,11 +8,16 @@ namespace ElectricData
     public interface IFormOfSelect
     {
         List<string> SearchSelection { get; set; }
+        string Message { get; set; }
         event EventHandler OpenSearch;
+        event EventHandler ErrorOfSelect;
     }
+
+    //Форма выбора схемы
     public partial class FormOfSelect : MetroForm, IFormOfSelect
     {
         List<string> items_select_box;
+        string message;
 
         public FormOfSelect()
         {
@@ -22,16 +27,19 @@ namespace ElectricData
         }
 
         #region События формы Select
+        //Обработка кнопки "Выход"
         private void ExitSelect_button_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //Обработка закрытия формы
         private void FormOfSelect_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
+        //Обработка кнопки перехода к форме поиска (временное решение)
         private void SelectSort_button_Click(object sender, EventArgs e)
         {
             if (SelectOfSort_box.Text == "Учет электроэнергии")
@@ -45,21 +53,39 @@ namespace ElectricData
             }
         }
 
+        //Загрузка формы
         private void FormOfSelect_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mainDBDataSet_circuits.circuits". При необходимости она может быть перемещена или удалена.
-            this.circuitsTableAdapter.Fill(this.mainDBDataSet.circuits);
+            try
+            {
+                this.circuitsTableAdapter.Fill(this.mainDBDataSet.circuits);
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                ErrorOfSelect?.Invoke(this, EventArgs.Empty);
+            }
         }
         #endregion
 
         #region IFormOfSelect
-        public event EventHandler OpenSearch;
-
+        //Поиск списка схем по базе данных (сейчас в коде не задействовано, используется BindingSource и TableAdapter)
         public List<string> SearchSelection
         {
             get { return items_select_box; }
             set { items_select_box = value; }
         }
+
+        //Передаваемое сообщение
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
+
+        //Проброс событий формы
+        public event EventHandler ErrorOfSelect;
+        public event EventHandler OpenSearch;
         #endregion
     }
 }

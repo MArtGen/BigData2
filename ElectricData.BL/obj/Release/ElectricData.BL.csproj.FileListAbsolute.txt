@@ -1,0 +1,13 @@
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\ElectricData.BL.dll.config
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\ElectricData.BL.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\ElectricData.BL.pdb
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\EntityFramework.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\EntityFramework.SqlServer.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\EntityFramework.xml
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\EntityFramework.SqlServer.xml
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\ru\EntityFramework.resources.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\bin\Release\ru\EntityFramework.SqlServer.resources.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Release\ElectricData.BL.csprojResolveAssemblyReference.cache
+I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Release\ElectricData.BL.csproj.CoreCompileInputs.cache
+I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Release\ElectricData.BL.dll
+I:\Learning\GitHub\BigData2\ElectricData.BL\obj\Release\ElectricData.BL.pdb

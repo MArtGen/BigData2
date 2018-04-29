@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Data.SqlClient;
 
-
 namespace ElectricData.BL
 {
     public interface IDataBaseManager
@@ -10,8 +9,10 @@ namespace ElectricData.BL
         void ConnectionDB(string servername, string dbname);
     }
 
+    //Бизнес-логика (работа с базой данных)
     public class DataBaseManager : IDataBaseManager
     {
+        //Подключение к БД
         public void ConnectionDB(string servername, string dbname)
         {
                 string connectionString = @"Data Source=.\" + servername + ";Initial Catalog=" + 
@@ -23,6 +24,7 @@ namespace ElectricData.BL
                 }
         }
 
+        //Выборка ссылки из БД
         public string Select_Note (string link_for_note, string source)
         {
             using (MainDBContext dc = new MainDBContext())
@@ -44,11 +46,11 @@ namespace ElectricData.BL
                 }
                 try
                 {
-                    return link[0];
+                    return link[0]; //ссылка
                 }
                 catch
                 {
-                    return "";
+                    return ""; //иначе пусто
                 }
             }
         }
