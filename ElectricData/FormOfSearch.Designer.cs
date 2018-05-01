@@ -241,7 +241,7 @@
             this.inputs_box.Location = new System.Drawing.Point(157, 241);
             this.inputs_box.Name = "inputs_box";
             this.inputs_box.Size = new System.Drawing.Size(172, 29);
-            this.inputs_box.TabIndex = 8;
+            this.inputs_box.TabIndex = 10;
             // 
             // bindingSource_inputs
             // 
@@ -269,7 +269,7 @@
             this.convertI_box.Location = new System.Drawing.Point(157, 277);
             this.convertI_box.Name = "convertI_box";
             this.convertI_box.Size = new System.Drawing.Size(172, 29);
-            this.convertI_box.TabIndex = 10;
+            this.convertI_box.TabIndex = 12;
             // 
             // bindingSource_conv_I
             // 
@@ -297,7 +297,7 @@
             this.convertU_box.Location = new System.Drawing.Point(157, 313);
             this.convertU_box.Name = "convertU_box";
             this.convertU_box.Size = new System.Drawing.Size(172, 29);
-            this.convertU_box.TabIndex = 12;
+            this.convertU_box.TabIndex = 14;
             // 
             // bindingSource_conv_U
             // 
@@ -325,7 +325,7 @@
             this.krm_box.Location = new System.Drawing.Point(157, 349);
             this.krm_box.Name = "krm_box";
             this.krm_box.Size = new System.Drawing.Size(172, 29);
-            this.krm_box.TabIndex = 14;
+            this.krm_box.TabIndex = 16;
             // 
             // bindingSource_krm
             // 
@@ -353,7 +353,7 @@
             this.volt_box.Location = new System.Drawing.Point(157, 204);
             this.volt_box.Name = "volt_box";
             this.volt_box.Size = new System.Drawing.Size(172, 29);
-            this.volt_box.TabIndex = 17;
+            this.volt_box.TabIndex = 8;
             // 
             // bindingSource_voltmeters
             // 
@@ -381,7 +381,7 @@
             this.country_box.Location = new System.Drawing.Point(157, 385);
             this.country_box.Name = "country_box";
             this.country_box.Size = new System.Drawing.Size(172, 29);
-            this.country_box.TabIndex = 19;
+            this.country_box.TabIndex = 18;
             // 
             // bindingSource_country
             // 
