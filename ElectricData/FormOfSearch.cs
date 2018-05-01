@@ -118,6 +118,7 @@ namespace ElectricData
                 pcam_box.SelectedIndex = -1;
 
                 this.selectPCAMTableAdapter.Fill(this.mainDBDataSet.SelectPCAM);
+                extra_text.ReadOnly = true;
                 Load_extra();
             }
             catch (Exception ex)

@@ -21,6 +21,7 @@ namespace ElectricData
         {
             InitializeComponent();
             Exit_button.Click += ExitOfDataEditor_button_Click;
+            GridViewOfDataEditor.DataError += GridViewOfDataEditor_DataError;
         }
 
         #region События формы DataEditor
@@ -43,6 +44,7 @@ namespace ElectricData
         {
             try
             {
+                Validate();
                 registTableAdapter.Update(mainDBDataSet);
                 countersTableAdapter.Update(mainDBDataSet);
                 bloksTableAdapter.Update(mainDBDataSet);
@@ -53,12 +55,10 @@ namespace ElectricData
                 converters_uTableAdapter.Update(mainDBDataSet);
                 krmTableAdapter.Update(mainDBDataSet);
                 countryTableAdapter.Update(mainDBDataSet);
-                message = "Сохранение прошло успешно";
-                MessageOfDE?.Invoke(this, EventArgs.Empty);
             }
-            catch
+            catch (Exception ex)
             {
-                message = "Ошибка сохранения данных";
+                message = ex.Message;
                 ErrorOfDE?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -101,6 +101,14 @@ namespace ElectricData
                 message = ex.Message;
                 ErrorOfDE?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        //Обработчик события ошибки DataGridView
+        private void GridViewOfDataEditor_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            message = "Ошибка ввода. Основные поля поиска не должны быть пустыми";
+            ErrorOfDE?.Invoke(this, EventArgs.Empty);
+            e.ThrowException = false;
         }
         #endregion
 
